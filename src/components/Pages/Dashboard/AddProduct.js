@@ -1,15 +1,15 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const MyProfile = () => {
+const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = async data => {
-        
+
         console.log(data);
     }
     return (
         <div>
-            <h2 className='text-center text-bold text-4xl'>My Profile</h2>
+            <h2>Add Product</h2>
             <div className='lg:mx-20 my-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
@@ -18,12 +18,12 @@ const MyProfile = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Your Name"
+                            placeholder="Product Name"
                             className="input input-bordered w-full "
                             {...register("name", {
                                 required: {
                                     value: true,
-                                    message: 'name is Required'
+                                    message: 'Name is Required'
                                 }
                             })}
                         />
@@ -34,79 +34,82 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text">Image</span>
                         </label>
                         <input
-                            type="email"
-                            placeholder="Your Email"
+                            type="text"
+                            placeholder="Product Image"
                             className="input input-bordered w-full "
-                            {...register("email", {
+                            {...register("image", {
                                 required: {
                                     value: true,
-                                    message: 'Email is Required'
-                                },
-                                pattern: {
-                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                    message: 'Provide a valid Email'
+                                    message: 'Image is Required'
                                 }
                             })}
                         />
                         <label className="label">
-                            {errors.email?.type === 'required' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-
+                            {errors.image?.type === 'required' && <span className="label-text-alt text-red-600">{errors.image.message}</span>}
                         </label>
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Education</span>
+                            <span className="label-text">Short Description</span>
                         </label>
-                        <input
+                        <textarea
                             type="text"
-                            placeholder="Education"
+                            placeholder="Short Description"
                             className="input input-bordered w-full "
-                            {...register("education")}
+                            {...register("description", {
+                                required: {
+                                    value: true,
+                                    message: 'Description is Required'
+                                }
+                            })}
                         />
+                        {errors.description?.type === 'required' && <span className="label-text-alt text-red-600">{errors.description.message}</span>}
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Location</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Your Location"
-                            className="input input-bordered w-full "
-                            {...register("location")}
-                        />
-                    </div>
-                    <div className="form-control w-full ">
-                        <label className="label">
-                            <span className="label-text">Your Phone</span>
+                            <span className="label-text">Minimum Order Quantity</span>
                         </label>
                         <input
                             type="number"
-                            placeholder="Your Phone"
+                            placeholder="Minimum Order Quantity"
                             className="input input-bordered w-full "
-                            {...register("phone")}
+                            {...register("minimumQuantity", {
+                                required: {
+                                    value: true,
+                                    message: 'Minimum Order Quantity is Required'
+                                }
+                            })}
                         />
+                        {errors.minimumQuantity?.type === 'required' && <span className="label-text-alt text-red-600">{errors.minimumQuantity.message}</span>}
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Your Linkdin Profile</span>
+                            <span className="label-text">Available Quantity</span>
                         </label>
                         <input
-                            type="text"
-                            placeholder="Your Linkdin Profile"
+                            type="number"
+                            placeholder="Available Quantity"
                             className="input input-bordered w-full "
-                            {...register("linkdin")}
+                            {...register("availableQuantity", {
+                                required: {
+                                    value: true,
+                                    message: 'Available Quantity is Required'
+                                }
+                            })}
                         />
+                        <label className="label">
+                            {errors.availableQuantity?.type === 'required' && <span className="label-text-alt text-red-600">{errors.availableQuantity.message}</span>}
+
+                        </label>
                     </div>
-                    {/* {signUpError} */}
-                    <input className='btn w-50 block mx-auto my-8 text-white' type="submit" value='UPDATE PROFILE' />
+                    <input className='btn w-50 block mx-auto my-8 text-white' type="submit" value='ADD REVIEW' />
                 </form>
             </div>
         </div>
     );
 };
 
-export default MyProfile;
+export default AddProduct;

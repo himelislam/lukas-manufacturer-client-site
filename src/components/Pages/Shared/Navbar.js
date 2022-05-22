@@ -18,7 +18,7 @@ const Navbar = () => {
                         <Link to='/dashboard'><li className='font-semibold'><a>Dashboard</a></li></Link>
                     </ul>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl"><img src="https://htmldemo.net/lukas/lukas/assets/img/logo.png" alt="" /></a>
+                <Link to='/'><a class="btn btn-ghost normal-case text-xl"><img src="https://htmldemo.net/lukas/lukas/assets/img/logo.png" alt="" /></a></Link>
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">
@@ -33,6 +33,15 @@ const Navbar = () => {
                     :
                     <Link to='/login'><a class="btn">Login</a></Link>
                 }
+                {
+                    user ? 
+                    <Link to='/dashboard/'><a class="btn btn-primary mx-1">{user?.displayName}</a></Link>
+                    :
+                    ''
+                }
+                <label for="dashboard-sidebar" tabIndex="1" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
             </div>
         </div>
     );

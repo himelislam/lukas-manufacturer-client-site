@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import OrderRow from './OrderRow';
+import UserRow from './UserRow';
 
-const MyOrders = () => {
-    const [products, setProducts] = useState([]);
+const MakeAdmin = () => {
+    const [users, setUsers] = useState([])
     useEffect(()=> {
-        fetch('products.json')
+        fetch()
         .then(res => res.json())
-        .then(data => setProducts(data))
+        .then(data => setUsers(data));
     },[])
     return (
         <div>
-            <h2 className='text-center text-3xl text-bold'>My Orders {products.length}</h2>
+            <h2 className=''>Make Admin</h2>
             <div>
                 <div class="overflow-x-auto">
                     <table class="table w-full">
@@ -24,7 +24,7 @@ const MyOrders = () => {
                         </thead>
                         <tbody>
                             {
-                                products.map((order, index) => <OrderRow key={index} index={index} order={order}></OrderRow>)
+                                users.map((user, index) => <UserRow key={index} index={index} user={user}></UserRow>)
                             }
                         </tbody>
                     </table>
@@ -34,4 +34,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default MakeAdmin;

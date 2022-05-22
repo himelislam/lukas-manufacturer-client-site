@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import OrderRow from './OrderRow';
+import ManageProductsRow from './ManageProductsRow';
 
-const MyOrders = () => {
+const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(()=> {
         fetch('products.json')
@@ -10,7 +10,7 @@ const MyOrders = () => {
     },[])
     return (
         <div>
-            <h2 className='text-center text-3xl text-bold'>My Orders {products.length}</h2>
+            <h2>Manage All Products</h2>
             <div>
                 <div class="overflow-x-auto">
                     <table class="table w-full">
@@ -24,7 +24,7 @@ const MyOrders = () => {
                         </thead>
                         <tbody>
                             {
-                                products.map((order, index) => <OrderRow key={index} index={index} order={order}></OrderRow>)
+                                products.map((product, index) => <ManageProductsRow key={index} index={index} product={product}></ManageProductsRow>)
                             }
                         </tbody>
                     </table>
@@ -34,4 +34,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageProducts;

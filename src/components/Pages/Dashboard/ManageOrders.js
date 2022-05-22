@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import OrderRow from './OrderRow';
+import ManageOrderRow from './ManageOrderRow';
 
-const MyOrders = () => {
-    const [products, setProducts] = useState([]);
+const ManageOrders = () => {
+    const [orders, setOrders] = useState([]);
     useEffect(()=> {
         fetch('products.json')
         .then(res => res.json())
-        .then(data => setProducts(data))
+        .then(data => setOrders(data))
     },[])
     return (
         <div>
-            <h2 className='text-center text-3xl text-bold'>My Orders {products.length}</h2>
+            <h2>Manage All Orders</h2>
             <div>
                 <div class="overflow-x-auto">
                     <table class="table w-full">
@@ -24,7 +24,7 @@ const MyOrders = () => {
                         </thead>
                         <tbody>
                             {
-                                products.map((order, index) => <OrderRow key={index} index={index} order={order}></OrderRow>)
+                                orders.map((order, index) => <ManageOrderRow key={index} index={index} order={order}></ManageOrderRow>)
                             }
                         </tbody>
                     </table>
@@ -34,4 +34,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageOrders;
