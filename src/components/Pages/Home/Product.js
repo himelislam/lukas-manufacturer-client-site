@@ -20,7 +20,7 @@ const Product = ({ product }) => {
                     <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
                 </div>
                 <div class="card-actions">
-                    <Link to={`/purchase/${product.id}`}><button class="btn btn-primary">BOOK NOW</button></Link>
+                    <Link to={`/purchase/${product._id}`}><button class="btn btn-primary">BOOK NOW</button></Link>
                 </div>
             </div>
         </div>

@@ -17,10 +17,27 @@ const SignUp = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
       const { register, formState: { errors }, handleSubmit } = useForm();
+      const from = location.state?.from?.pathname || '/';
       const onSubmit = async data => {
         console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({displayName : data.name})
+        await updateProfile({displayName : data.name});
+        const email = data.email;
+        fetch('http://localhost:5000/login',{
+            method: 'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify({email})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.token){
+                navigate(from, {replace : true});
+            }
+            localStorage.setItem('accessToken', data.accessToken)
+        })
     }
 
     if(loading || gLoading || updating){
@@ -33,11 +50,26 @@ const SignUp = () => {
     }
 
     
-    const from = location.state?.from?.pathname || '/';
+    
 
     if(user || gUser){
         console.log(user, gUser);
-        navigate(from, {replace : true});
+        const email = gUser?.user?.email;
+        fetch('http://localhost:5000/login',{
+            method: 'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify({email})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.token){
+                navigate(from, {replace : true});
+            }
+            localStorage.setItem('accessToken', data.accessToken)
+        })
     }
     return (
         <div className='flex mt-10 items-center justify-center'>

@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 
 const Purchase = () => {
     const { id } = useParams();
+    const [product, setProduct] = useState([]);
+    useEffect(()=>{
+        fetch(`http://localhost:5000/products/${id}`)
+        .then(res => res.json())
+        .then(data => setProduct(data))
+    },[])
     const minimum = 10;
     const available = 30;
     const [orderQuantity, setOrderQuantity] = useState(parseInt(id));
@@ -168,7 +174,7 @@ const Purchase = () => {
                         <div class="">
                             <div class="max-w-md mb-6">
                                 <span class="text-xs text-gray-400 tracking-wider">APPLE #3299803</span>
-                                <h2 class="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">Apple iPhone 12 Pro (128GB) - Silver</h2>
+                                <h2 class="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">{product.name}</h2>
                                 <p class="flex items-center mb-6">
                                     <span class="mr-2 text-sm text-blue-500 font-medium">$</span>
                                     <span class="text-3xl text-blue-500 font-medium">44.90</span>
