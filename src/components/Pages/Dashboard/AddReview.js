@@ -23,7 +23,7 @@ const AddReview = () => {
                             {...register("name", {
                                 required: {
                                     value: true,
-                                    message: 'name is Required'
+                                    message: 'Name is Required'
                                 }
                             })}
                         />
@@ -65,8 +65,16 @@ const AddReview = () => {
                             type="text"
                             placeholder="Description"
                             className="input input-bordered w-full "
-                            {...register("description")}
+                            {...register("description", {
+                                required: {
+                                    value: true,
+                                    message: 'Description is Required'
+                                }
+                                })}
                         />
+                        <label className="label">
+                            {errors.description?.type === 'required' && <span className="label-text-alt text-red-600">{errors.description.message}</span>}
+                        </label>
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
@@ -76,8 +84,16 @@ const AddReview = () => {
                             type="text"
                             placeholder="Your Image"
                             className="input input-bordered w-full "
-                            {...register("img")}
+                            {...register("img", {
+                                required: {
+                                    value: true,
+                                    message: 'Description is Required'
+                                }
+                                })}
                         />
+                        <label className="label">
+                            {errors.img?.type === 'required' && <span className="label-text-alt text-red-600">{errors.img.message}</span>}
+                        </label>
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
@@ -91,11 +107,16 @@ const AddReview = () => {
                             pattern: {
                                 value: /[1-5]/,
                                 message: 'Rate out of 5 only.'
+                            },
+                            required: {
+                                value: true,
+                                message: 'Ratings is Required'
                             }
                         })}
                         />
                         <label className="label">
                             {errors.rating?.type === 'pattern' && <span className="label-text-alt text-red-600">{errors.rating.message}</span>}
+                            {errors.rating?.type === 'required' && <span className="label-text-alt text-red-600">{errors.rating.message}</span>}
 
                         </label>
                     </div>
