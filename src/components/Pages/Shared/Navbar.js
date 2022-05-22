@@ -16,6 +16,8 @@ const Navbar = () => {
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <Link to='/'><li className='font-semibold'><a>Home</a></li></Link>
                         <Link to='/dashboard'><li className='font-semibold'><a>Dashboard</a></li></Link>
+                        <Link to='/blogs'><li className='font-semibold'><a>Blogs</a></li></Link>
+                        <Link to='/portfolio'><li className='font-semibold'><a>Portfolio</a></li></Link>
                     </ul>
                 </div>
                 <Link to='/'><a class="btn btn-ghost normal-case text-xl"><img src="https://htmldemo.net/lukas/lukas/assets/img/logo.png" alt="" /></a></Link>
@@ -24,20 +26,22 @@ const Navbar = () => {
                 <ul class="menu menu-horizontal p-0">
                     <Link to='/'><li><a className='font-semibold'>Home</a></li></Link>
                     <Link to='/dashboard'><li><a className='font-semibold'>Dashboard</a></li></Link>
+                    <Link to='/blogs'><li className='font-semibold'><a>Blogs</a></li></Link>
+                    <Link to='/portfolio'><li className='font-semibold'><a>Portfolio</a></li></Link>
                 </ul>
             </div>
             <div class="navbar-end">
                 {
-                    user ? 
-                    <Link to='/login' onClick={()=>signOut(auth)}><a class="btn">Sign Out</a></Link>
-                    :
-                    <Link to='/login'><a class="btn">Login</a></Link>
+                    user ?
+                        <Link to='/login' onClick={() => signOut(auth)}><a class="btn">Sign Out</a></Link>
+                        :
+                        <Link to='/login'><a class="btn">Login</a></Link>
                 }
                 {
-                    user ? 
-                    <Link to='/dashboard/'><a class="btn btn-primary mx-1">{user?.displayName}</a></Link>
-                    :
-                    ''
+                    user ?
+                        <Link to='/dashboard/'><a class="btn btn-primary mx-1">{user?.displayName}</a></Link>
+                        :
+                        ''
                 }
                 <label for="dashboard-sidebar" tabIndex="1" className="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
