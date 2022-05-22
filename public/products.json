@@ -1,5 +1,6 @@
 [
-    {
+    {   
+        "id" : 1,
         "name" : "Auto Cluth & Break",
         "img" : "https://htmldemo.net/lukas/lukas/assets/img/product/product-1.png",
         "description" : "Created from either wood or recycled materials, it can be moulded into just about any shape and hardens to provide a hard shell. Additives can make it water resistant and it can be produced in a rainbow of colours. Other materials being looked at include paper clay, paper glue, paper cotton and even washable paper.",
@@ -7,7 +8,8 @@
         "availableQuantity" : 500,
         "price" : 165
     },
-    {
+    {   
+        "id" : 2,
         "name" : "Leather Steering Wheel",
         "img" : "https://htmldemo.net/lukas/lukas/assets/img/product/product-3.png",
         "description" : "Created from either wood or recycled materials, it can be moulded into just about any shape and hardens to provide a hard shell. Additives can make it water resistant and it can be produced in a rainbow of colours. Other materials being looked at include paper clay, paper glue, paper cotton and even washable paper.",
@@ -15,7 +17,8 @@
         "availableQuantity" : 400,
         "price" : 235
     },
-    {
+    {   
+        "id" : 3,
         "name" : "Hanging 4K Camera",
         "img" : "https://htmldemo.net/lukas/lukas/assets/img/product/product-4.png",
         "description" : "Created from either wood or recycled materials, it can be moulded into just about any shape and hardens to provide a hard shell. Additives can make it water resistant and it can be produced in a rainbow of colours. Other materials being looked at include paper clay, paper glue, paper cotton and even washable paper.",
@@ -23,7 +26,8 @@
         "availableQuantity" : 400,
         "price" : 65
     },
-    {
+    {   
+        "id" : 4,
         "name" : "17 inch Rims 8 Lug",
         "img" : "https://htmldemo.net/lukas/lukas/assets/img/product/product-2.png",
         "description" : "Created from either wood or recycled materials, it can be moulded into just about any shape and hardens to provide a hard shell. Additives can make it water resistant and it can be produced in a rainbow of colours. Other materials being looked at include paper clay, paper glue, paper cotton and even washable paper.",
@@ -31,7 +35,8 @@
         "availableQuantity" : 500,
         "price" : 165
     },
-    {
+    {   
+        "id" : 5,
         "name" : "Locking Hub Diagram",
         "img" : "https://htmldemo.net/lukas/lukas/assets/img/product/product-5.png",
         "description" : "Created from either wood or recycled materials, it can be moulded into just about any shape and hardens to provide a hard shell. Additives can make it water resistant and it can be produced in a rainbow of colours. Other materials being looked at include paper clay, paper glue, paper cotton and even washable paper.",
@@ -39,7 +44,8 @@
         "availableQuantity" : 400,
         "price" : 165
     },
-    {
+    {   
+        "id" : 6,
         "name" : "Air Intake System",
         "img" : "https://htmldemo.net/lukas/lukas/assets/img/product/product-10.png",
         "description" : "Created from either wood or recycled materials, it can be moulded into just about any shape and hardens to provide a hard shell. Additives can make it water resistant and it can be produced in a rainbow of colours. Other materials being looked at include paper clay, paper glue, paper cotton and even washable paper.",

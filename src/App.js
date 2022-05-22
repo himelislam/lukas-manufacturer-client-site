@@ -9,6 +9,7 @@ import MyProfile from './components/Pages/Dashboard/MyProfile';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
 import AddReview from './components/Pages/Dashboard/AddReview';
 import Footer from './components/Pages/Shared/Footer';
+import Purchase from './components/Pages/Purchase/Purchase';
 
 function App() {
   return (
@@ -21,10 +22,11 @@ function App() {
           <Route path='myorders' element={<MyOrders></MyOrders>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
         </Route>
+        <Route path='purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signUp' element={<SignUp></SignUp>}></Route>
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

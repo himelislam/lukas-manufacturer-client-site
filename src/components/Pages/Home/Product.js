@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
     return (
@@ -19,7 +20,7 @@ const Product = ({ product }) => {
                     <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
                 </div>
                 <div class="card-actions">
-                    <button class="btn btn-primary">BOOK NOW</button>
+                    <Link to={`/purchase/${product.id}`}><button class="btn btn-primary">BOOK NOW</button></Link>
                 </div>
             </div>
         </div>
