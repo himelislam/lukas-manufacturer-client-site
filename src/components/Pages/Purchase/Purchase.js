@@ -17,7 +17,7 @@ const Purchase = () => {
     const minimum = product.minimumQuantity;
     const available = product.availableQuantity;
     const [orderQuantity, setOrderQuantity] = useState(minimum);
-    const [finalOrderQuantity, setFinalOrderQuantity] = useState(minimum);
+    const [finalOrderQuantity, setFinalOrderQuantity] = useState();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
         const order = {
@@ -167,7 +167,7 @@ const Purchase = () => {
 
                                     </label>
                                 </div>
-                                <input className='btn w-full max-w-xs text-white' type="submit" value='Place Order' />
+                                <input className={finalOrderQuantity ? 'btn w-full max-w-xs text-white' : 'btn w-full max-w-xs text-white btn-disabled'} type="submit" value='Place Order' />
                             </form>
 
                         </div>
@@ -218,14 +218,14 @@ const Purchase = () => {
                                     <span>Available Quantity : </span>
                                     <span class="text-gray-400"> {product.availableQuantity}</span>
                                 </h4>
-                                <h4 class="mb-3 font-heading font-medium">
-                                    <span>Order Quantity : </span>
-                                    <span> {finalOrderQuantity}</span>
-                                </h4>
+                                <h4 class="mb-3 font-heading font-medium">Minimum Order Quantity : {product.minimumQuantity}</h4>
                                 
                             </div>
                             <div class="mb-10">
-                                <h4 class="mb-3 font-heading font-medium">Minimum Order Quantity : {product.minimumQuantity}</h4>
+                                <h4 class="mb-3 text-xl font-semibold text-green-700">
+                                    <span>Order Quantity : </span>
+                                    <span> {finalOrderQuantity}</span>
+                                </h4>
                                 <form onSubmit={handleOrderQuantity}>
                                 <button onClick={()=>setOrderQuantity(parseInt(orderQuantity) - 1)} className='btn btn-sm mx-2'>-</button>
 

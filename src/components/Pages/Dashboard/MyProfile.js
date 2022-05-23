@@ -1,11 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 const MyProfile = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const [authUser] = useAuthState(auth);
+    const [serverUser, setServerUser] = useState({});
+    const [isReload, setIsReload] = useState(false);
+    useEffect(() => {
+        fetch(`http://localhost:5000/user/${authUser.email}`)
+            .then(res => res.json())
+            .then(data => setServerUser(data))
+    }, [authUser, isReload])
+    const email = authUser.email;
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
-        
-        console.log(data);
+        const user = {
+            email: authUser.email,
+            education: data.education,
+            location: data.location,
+            phone: data.phone,
+            linkdin: data.linkdin
+        }
+        console.log(user);
+        fetch(`http://localhost:5000/user/?email=${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ user })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    toast('Your Profile Updated Successfully');
+                    reset();
+                    setIsReload(!isReload)
+                }
+            })
+
     }
     return (
         <div>
@@ -14,48 +49,29 @@ const MyProfile = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Name {serverUser.name}</span>
                         </label>
                         <input
                             type="text"
-                            placeholder="Your Name"
+                            placeholder={authUser?.displayName}
+                            disabled
+                            value={authUser?.displayName}
                             className="input input-bordered w-full "
-                            {...register("name", {
-                                required: {
-                                    value: true,
-                                    message: 'name is Required'
-                                }
-                            })}
+                            {...register("name")}
                         />
-                        <label className="label">
-                            {errors.name?.type === 'required' && <span className="label-text-alt text-red-600">{errors.name.message}</span>}
-
-                        </label>
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text">Email {serverUser.email}</span>
                         </label>
                         <input
                             type="email"
-                            placeholder="Your Email"
+                            placeholder={authUser?.email}
+                            disabled
+                            value={authUser?.email}
                             className="input input-bordered w-full "
-                            {...register("email", {
-                                required: {
-                                    value: true,
-                                    message: 'Email is Required'
-                                },
-                                pattern: {
-                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                    message: 'Provide a valid Email'
-                                }
-                            })}
+                            {...register("email")}
                         />
-                        <label className="label">
-                            {errors.email?.type === 'required' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-
-                        </label>
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
@@ -63,7 +79,7 @@ const MyProfile = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Education"
+                            placeholder={serverUser?.education}
                             className="input input-bordered w-full "
                             {...register("education")}
                         />
@@ -74,7 +90,7 @@ const MyProfile = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Your Location"
+                            placeholder={serverUser?.location}
                             className="input input-bordered w-full "
                             {...register("location")}
                         />
@@ -85,7 +101,7 @@ const MyProfile = () => {
                         </label>
                         <input
                             type="number"
-                            placeholder="Your Phone"
+                            placeholder={serverUser?.phone}
                             className="input input-bordered w-full "
                             {...register("phone")}
                         />
@@ -96,7 +112,7 @@ const MyProfile = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Your Linkdin Profile"
+                            placeholder={serverUser?.linkdin}
                             className="input input-bordered w-full "
                             {...register("linkdin")}
                         />
