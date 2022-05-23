@@ -1,29 +1,51 @@
 import React, { useState, useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 const Purchase = () => {
+    const [user] = useAuthState(auth);
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     useEffect(()=>{
         fetch(`http://localhost:5000/products/${id}`)
         .then(res => res.json())
         .then(data => setProduct(data))
-    },[])
-    const minimum = 10;
-    const available = 30;
-    const [orderQuantity, setOrderQuantity] = useState(parseInt(id));
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    },[id])
+    const minimum = product.minimumQuantity;
+    const available = product.availableQuantity;
+    const [orderQuantity, setOrderQuantity] = useState(minimum);
+    const [finalOrderQuantity, setFinalOrderQuantity] = useState(minimum);
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
-        const booking = {
-            name : data.name,
-            email : data.email,
+        const order = {
+            name : user.displayName,
+            email : user.email,
             company : data.company,
             address : data.address,
             phone : data.phone,
-            quantity : orderQuantity,
+            quantity : finalOrderQuantity,
+            product : product.name,
+            price : product.price
         }
-        console.log(booking);
+        console.log(order);
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body:JSON.stringify({order})
+        })
+        .then(res=>res.json())
+        .then(data => {
+            console.log(data);
+            if(data.acknowledged){
+                toast('Your Order Placed Successfully')
+                reset()
+            }
+        })
     }
     
     const handleOrder = event =>{
@@ -35,7 +57,8 @@ const Purchase = () => {
         event.preventDefault();
         const quantity = event.target.quantity.value;
         console.log(event.target);
-        setOrderQuantity(quantity)
+        setFinalOrderQuantity(quantity)
+        toast('Product Quantity Updated');
         
     }
     
@@ -63,19 +86,13 @@ const Purchase = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Your Name"
+                                        placeholder={user?.displayName}
+                                        value={user?.displayName}
+                                        disabled
                                         className="input input-bordered w-full "
-                                        {...register("name", {
-                                            required: {
-                                                value: true,
-                                                message: 'name is Required'
-                                            }
-                                        })}
+                                        {...register("name")}
                                     />
-                                    <label className="label">
-                                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-600">{errors.name.message}</span>}
-
-                                    </label>
+                                    
                                 </div>
                                 <div className="form-control w-full ">
                                     <label className="label">
@@ -83,24 +100,12 @@ const Purchase = () => {
                                     </label>
                                     <input
                                         type="email"
-                                        placeholder="Your Email"
+                                        placeholder={user?.email}
+                                        value={user?.email}
                                         className="input input-bordered w-full "
-                                        {...register("email", {
-                                            required: {
-                                                value: true,
-                                                message: 'Email is Required'
-                                            },
-                                            pattern: {
-                                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                                message: 'Provide a valid Email'
-                                            }
-                                        })}
+                                        disabled
+                                        {...register("email")}
                                     />
-                                    <label className="label">
-                                        {errors.email?.type === 'required' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-                                        {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-
-                                    </label>
                                 </div>
                                 <div className="form-control w-full ">
                                     <label className="label">
@@ -162,11 +167,8 @@ const Purchase = () => {
 
                                     </label>
                                 </div>
-                                {/* {signUpError} */}
                                 <input className='btn w-full max-w-xs text-white' type="submit" value='Place Order' />
                             </form>
-                            {/* <p><small>Already Have an Account? <Link to='/login' className='text-primary'>Please Login</Link></small></p> */}
-                            {/* <div className="divider">OR</div> */}
 
                         </div>
                     </div>
@@ -177,9 +179,9 @@ const Purchase = () => {
                                 <h2 class="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">{product.name}</h2>
                                 <p class="flex items-center mb-6">
                                     <span class="mr-2 text-sm text-blue-500 font-medium">$</span>
-                                    <span class="text-3xl text-blue-500 font-medium">44.90</span>
+                                    <span class="text-3xl text-blue-500 font-medium">{product.price}</span>
                                 </p>
-                                <p class="text-lg text-gray-400">The nulla commodo, commodo eros a lor, tristique lectus. Lorem sad 128 GB silver.</p>
+                                <p class="text-lg text-gray-400">{product.description}</p>
                             </div>
                             <div class="flex mb-6 items-center">
                                 <div class="inline-flex mr-4">
@@ -209,39 +211,32 @@ const Purchase = () => {
                                         </svg>
                                     </button>
                                 </div>
-                                <span class="text-md text-gray-400">4.59</span>
+                                <span class="text-md text-gray-400">{product.rating}</span>
                             </div>
                             <div class="mb-6">
                                 <h4 class="mb-3 font-heading font-medium">
-                                    <span>Available Quantity :</span>
-                                    <span class="text-gray-400"> Silver</span>
+                                    <span>Available Quantity : </span>
+                                    <span class="text-gray-400"> {product.availableQuantity}</span>
                                 </h4>
-                                <button class="inline-flex items-center justify-center p-1 rounded-full border border-gray-300">
-                                    <div class="w-6 h-6 rounded-full bg-white"></div>
-                                </button>
-                                <button class="inline-flex items-center justify-center p-1 rounded-full border border-transparent">
-                                    <div class="w-6 h-6 rounded-full bg-orange-800"></div>
-                                </button>
-                                <button class="inline-flex items-center justify-center p-1 rounded-full border border-transparent">
-                                    <div class="w-6 h-6 rounded-full bg-blue-900"></div>
-                                </button>
-                                <button class="inline-flex items-center justify-center p-1 rounded-full border border-transparent">
-                                    <div class="w-6 h-6 rounded-full bg-yellow-500"></div>
-                                </button>
+                                <h4 class="mb-3 font-heading font-medium">
+                                    <span>Order Quantity : </span>
+                                    <span> {finalOrderQuantity}</span>
+                                </h4>
+                                
                             </div>
                             <div class="mb-10">
-                                <h4 class="mb-3 font-heading font-medium">Minimum Order Quantity : {orderQuantity}</h4>
+                                <h4 class="mb-3 font-heading font-medium">Minimum Order Quantity : {product.minimumQuantity}</h4>
                                 <form onSubmit={handleOrderQuantity}>
                                 <button onClick={()=>setOrderQuantity(parseInt(orderQuantity) - 1)} className='btn btn-sm mx-2'>-</button>
 
 
-                                <input onChange={handleOrder} class="w-24 px-3 py-2 text-center bg-white border-2 border-blue-500 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl" type="text" name='quantity' placeholder={orderQuantity} value={orderQuantity} />
+                                <input onChange={handleOrder} class="w-24 px-3 py-2 text-center bg-white border-2 border-blue-500 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl" type="text" name='quantity' placeholder={product.minimumQuantity} value={orderQuantity} />
 
                                 <button onClick={()=>setOrderQuantity(parseInt(orderQuantity) + 1)} className='btn btn-sm mx-2'>+</button>
                                 <br />
                                 {quantityError}
                                 <br />
-                                <button className={orderQuantity >= minimum && orderQuantity <= available ? 'btn btn-success ' : 'btn btn-success btn-disabled'}><input type="submit" value="Set Order Quantity"/></button>
+                                <button className={orderQuantity > (minimum - 1) && orderQuantity < available ? 'btn btn-success ' : 'btn btn-success btn-disabled'}><input type="submit" value="Set Order Quantity"/></button>
                                 </form>
                             </div>
                         </div>

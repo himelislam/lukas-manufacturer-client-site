@@ -12,64 +12,97 @@ const SignUp = () => {
     const [updateProfile, updating, dError] = useUpdateProfile(auth);
     const [
         createUserWithEmailAndPassword,
-        user,
+        cUser,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
-      const { register, formState: { errors }, handleSubmit } = useForm();
-      const from = location.state?.from?.pathname || '/';
-      const onSubmit = async data => {
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const { register, formState: { errors }, handleSubmit } = useForm();
+    const from = location.state?.from?.pathname || '/';
+    const onSubmit = async data => {
         console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({displayName : data.name});
+        await updateProfile({ displayName: data.name });
         const email = data.email;
-        fetch('http://localhost:5000/login',{
+        const user = {
+            name: data.name,
+            email: data.email
+        }
+        fetch('http://localhost:5000/login', {
             method: 'POST',
-            headers:{
-                'content-type':'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
-            body: JSON.stringify({email})
+            body: JSON.stringify({ email })
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.token){
-                navigate(from, {replace : true});
-            }
-            localStorage.setItem('accessToken', data.accessToken)
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.token) {
+                    fetch('http://localhost:5000/user', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ user })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if(data.acknowledged){
+                                navigate(from, { replace: true });
+                            }
+                        });
+                }
+                localStorage.setItem('accessToken', data.accessToken)
+            });
     }
 
-    if(loading || gLoading || updating){
+    if (loading || gLoading || updating) {
         return <Loading></Loading>
     }
 
     let signUpError;
-    if(error || gError || dError){
+    if (error || gError || dError) {
         signUpError = <p className='text-red-600'><small>{error?.message || gError?.message || dError?.message}</small></p>
     }
 
-    
-    
 
-    if(user || gUser){
-        console.log(user, gUser);
+
+
+    if (cUser || gUser) {
+        console.log(cUser, gUser);
         const email = gUser?.user?.email;
-        fetch('http://localhost:5000/login',{
+        const user = {
+            name: gUser?.user?.displayName,
+            email: gUser?.user?.email
+        }
+        fetch('http://localhost:5000/login', {
             method: 'POST',
-            headers:{
-                'content-type':'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
-            body: JSON.stringify({email})
+            body: JSON.stringify({ email })
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.token){
-                navigate(from, {replace : true});
-            }
-            localStorage.setItem('accessToken', data.accessToken)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.token) {
+                    fetch('http://localhost:5000/user', {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ user })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if(data.acknowledged){
+                                navigate(from, { replace: true });
+                            }
+                        });
+                }
+                localStorage.setItem('accessToken', data.accessToken)
+            })
     }
     return (
         <div className='flex mt-10 items-center justify-center'>
@@ -147,7 +180,7 @@ const SignUp = () => {
 
                             </label>
                         </div>
-                                {signUpError}
+                        {signUpError}
                         <input className='btn w-full max-w-xs text-white' type="submit" value='Sign Up' />
                     </form>
                     <p><small>Already Have an Account? <Link to='/login' className='text-primary'>Please Login</Link></small></p>

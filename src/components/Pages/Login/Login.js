@@ -12,7 +12,7 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
-        user,
+        sUser,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
@@ -33,7 +33,7 @@ const Login = () => {
         .then(data => {
             console.log(data);
             if(data.token){
-                navigate(from, {replace : true});
+                navigate(from, { replace: true });
             }
             localStorage.setItem('accessToken', data.accessToken)
         })
@@ -50,10 +50,14 @@ const Login = () => {
     }
 
 
-    if(user || gUser){
-        console.log(user, gUser);
+    if(sUser || gUser){
+        console.log(sUser, gUser);
         const email = gUser.user.email;
         console.log(email);
+        const user = {
+            name : gUser?.user?.displayName,
+            email : gUser?.user?.email
+        }
         fetch('http://localhost:5000/login',{
             method: 'POST',
             headers:{
@@ -63,9 +67,21 @@ const Login = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data.token){
-                navigate(from, {replace : true});
+                fetch('http://localhost:5000/user', {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ user })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if(data.acknowledged){
+                                navigate(from, { replace: true });
+                            }
+                        });
             }
             localStorage.setItem('accessToken', data.accessToken)
         })

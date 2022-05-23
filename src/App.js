@@ -17,6 +17,8 @@ import ManageProducts from './components/Pages/Dashboard/ManageProducts';
 import Blogs from './components/Pages/Blogs/Blogs';
 import Portfolio from './components/Pages/Portfolio/Portfolio';
 import NotFound from './components/Pages/Shared/NotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       {/* <Footer></Footer> */}
+      <ToastContainer></ToastContainer>
     </div>
   );
 }

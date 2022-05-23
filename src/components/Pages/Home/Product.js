@@ -10,7 +10,7 @@ const Product = ({ product }) => {
             <div class="card-body items-center text-center">
                 <h2 class="font-semibold text-xl">{product.name}</h2>
                 <p className='font-light mb-[-10px]'><small>{product.description.slice(0, 100)}</small></p>
-                <p><small>Minimum Order Quantity:{product.minimunQuantity}</small></p>
+                <p><small>Minimum Order Quantity:{product.minimumQuantity}</small></p>
                 <p><small>Available Quantity: {product.availableQuantity}</small></p>
                 <div class="rating rating-sm">
                     <input type="radio" name="rating-6" class="mask mask-star-2 bg-orange-400" />
