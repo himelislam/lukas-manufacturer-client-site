@@ -20,6 +20,7 @@ import NotFound from './components/Pages/Shared/NotFound';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Payment from './components/Pages/Payment/Payment';
+import RequireAdmin from './components/Pages/Shared/RequireAdmin';
 
 function App() {
   return (
@@ -31,10 +32,10 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='myorders' element={<MyOrders></MyOrders>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>
-          <Route path='manageorders' element={<ManageOrders></ManageOrders>}></Route>
-          <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
-          <Route path='makeadmin' element={<MakeAdmin></MakeAdmin>}></Route>
-          <Route path='manageproducts' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='manageorders' element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>}></Route>
+          <Route path='addproduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
+          <Route path='makeadmin' element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
+          <Route path='manageproducts' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
         </Route>
         <Route path='purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path='myorders/payment/:id' element={<Payment></Payment>}></Route>

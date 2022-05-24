@@ -17,6 +17,7 @@ const MyProfile = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
         const user = {
+            name: authUser.displayName,
             email: authUser.email,
             education: data.education,
             location: data.location,

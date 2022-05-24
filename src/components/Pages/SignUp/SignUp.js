@@ -36,7 +36,8 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.token) {
+                console.log(data);
+                if (data.token && user) {
                     fetch('http://localhost:5000/user', {
                         method: 'POST',
                         headers: {

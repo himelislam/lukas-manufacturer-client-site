@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-const ManageOrderRow = ({order, index , setIsReload, isReload}) => {
+const ManageOrderRow = ({order, index , setIsReload, isReload,setDeleteOrder}) => {
     const [productId, setProductId] = useState('');
     useEffect(()=>{
         if(productId){
@@ -22,6 +22,8 @@ const ManageOrderRow = ({order, index , setIsReload, isReload}) => {
         })
         }
     },[productId, isReload])
+
+    
     return (
         <tr>
             <th>{index+1}</th>
@@ -33,6 +35,7 @@ const ManageOrderRow = ({order, index , setIsReload, isReload}) => {
             <td>{order.price}</td>
             <td>
                 {order.paid ? <p>Paid</p> : <p>Unpaid</p>}
+                
             </td>
             <td>
                 {(order.pending && order.paid) ? <p>Pending</p> : '' }
@@ -40,6 +43,7 @@ const ManageOrderRow = ({order, index , setIsReload, isReload}) => {
             <td>
                 { (!order.shipped && order.paid ) && <button onClick={()=> setProductId(order._id)} className='btn btn-success btn-xs'>Ship Product</button>}
                 { (order.shipped && order.paid ) && <button onClick={()=> setProductId(order._id)} className='btn btn-success btn-xs'>Shipped</button>}
+                {order.paid ? '' : <label onClick={() => setDeleteOrder(order)} for="delete-order-modal" class="btn btn-xs btn-error">Cancel</label>}
             </td>
         </tr>
     );

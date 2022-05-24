@@ -1,11 +1,34 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const AddProduct = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
-
-        console.log(data);
+        const product = {
+            name: data.name,
+            img: data.img,
+            description: data.description,
+            availableQuantity: data.availableQuantity,
+            price: data.price,
+            minimumQuantity: data.minimumQuantity
+        }
+        // console.log(product);
+        fetch('http://localhost:5000/product', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({product})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.acknowledged){
+                toast('Product Added')
+                reset()
+            }
+        })
     }
     return (
         <div>
@@ -14,7 +37,7 @@ const AddProduct = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Product Name</span>
                         </label>
                         <input
                             type="text"
@@ -23,7 +46,7 @@ const AddProduct = () => {
                             {...register("name", {
                                 required: {
                                     value: true,
-                                    message: 'Name is Required'
+                                    message: 'Product Name is Required'
                                 }
                             })}
                         />
@@ -34,21 +57,21 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Image</span>
+                            <span className="label-text">Product Image</span>
                         </label>
                         <input
                             type="text"
                             placeholder="Product Image"
                             className="input input-bordered w-full "
-                            {...register("image", {
+                            {...register("img", {
                                 required: {
                                     value: true,
-                                    message: 'Image is Required'
+                                    message: 'Product Image is Required'
                                 }
                             })}
                         />
                         <label className="label">
-                            {errors.image?.type === 'required' && <span className="label-text-alt text-red-600">{errors.image.message}</span>}
+                            {errors.img?.type === 'required' && <span className="label-text-alt text-red-600">{errors.img.message}</span>}
                         </label>
                     </div>
                     <div className="form-control w-full ">
@@ -105,7 +128,27 @@ const AddProduct = () => {
 
                         </label>
                     </div>
-                    <input className='btn w-50 block mx-auto my-8 text-white' type="submit" value='ADD REVIEW' />
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text">Price</span>
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Price"
+                            className="input input-bordered w-full "
+                            {...register("price", {
+                                required: {
+                                    value: true,
+                                    message: 'Price is Required'
+                                }
+                            })}
+                        />
+                        <label className="label">
+                            {errors.price?.type === 'required' && <span className="label-text-alt text-red-600">{errors.price.message}</span>}
+
+                        </label>
+                    </div>
+                    <input className='btn w-50 block mx-auto my-8 text-white' type="submit" value='ADD PRODUCT' />
                 </form>
             </div>
         </div>

@@ -17,9 +17,10 @@ const ManageProducts = () => {
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Job</th>
-                                <th>Favorite Color</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Available Quantity</th>
+                                <th>Av Quantity</th>
                             </tr>
                         </thead>
                         <tbody>

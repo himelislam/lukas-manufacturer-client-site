@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import DeleteOrderModal from './DeleteOrderModal';
 import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
-    const [isReload, setIsReload] = useState(false)
+    const [deleteOrder, setDeleteOrder] = useState(null);
+    const [isReload, setIsReload] = useState(false);
     useEffect(()=> {
         fetch('http://localhost:5000/orders')
         .then(res => res.json())
@@ -37,10 +39,21 @@ const ManageOrders = () => {
                                 order={order}
                                 isReload={isReload}
                                 setIsReload={setIsReload}
+                                setDeleteOrder={setDeleteOrder}
                                 ></ManageOrderRow>)
                             }
                         </tbody>
                     </table>
+                    <div>
+                        {
+                            deleteOrder && <DeleteOrderModal
+                            deleteOrder={deleteOrder}
+                            setDeleteOrder={setDeleteOrder}
+                            isReload={isReload}
+                            setIsReload={setIsReload}
+                            ></DeleteOrderModal>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

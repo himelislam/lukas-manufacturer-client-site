@@ -16,7 +16,7 @@ const BestSeller = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {
-                    products.slice(0,4).map(product => <Product key={product._id} product={product}></Product>)
+                    products.map(product => <Product key={product._id} product={product}></Product>)
                 }
             </div>
         </div>

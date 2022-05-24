@@ -4,7 +4,7 @@ import UserRow from './UserRow';
 const MakeAdmin = () => {
     const [users, setUsers] = useState([])
     useEffect(()=> {
-        fetch()
+        fetch('http://localhost:5000/user')
         .then(res => res.json())
         .then(data => setUsers(data));
     },[])
@@ -18,8 +18,9 @@ const MakeAdmin = () => {
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
-                                <th>Job</th>
-                                <th>Favorite Color</th>
+                                <th>Email</th>
+                                <th>Make Admin</th>
+                                <th>Remove User</th>
                             </tr>
                         </thead>
                         <tbody>
