@@ -28,7 +28,8 @@ const Purchase = () => {
             phone : data.phone,
             quantity : finalOrderQuantity,
             product : product.name,
-            price : product.price
+            price : product.price,
+            paid: false
         }
         console.log(order);
         fetch('http://localhost:5000/order', {

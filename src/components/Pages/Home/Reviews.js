@@ -7,7 +7,8 @@ const Reviews = () => {
         fetch('http://localhost:5000/review')
         .then(res=> res.json())
         .then(data => setReviews(data))
-    },[])
+    },[]);
+    // const reversed = reviews.reverse();
     return (
         <div className='px-10 my-20'>
             <div className='text-center w-[500px] mx-auto mb-10'>
@@ -16,7 +17,7 @@ const Reviews = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
                 {
-                    reviews.slice(0,3).map(review => <Review key={review._id} review={review}></Review>)
+                    reviews.map(review => <Review key={review._id} review={review}></Review>)
                 }
             </div>
         </div>

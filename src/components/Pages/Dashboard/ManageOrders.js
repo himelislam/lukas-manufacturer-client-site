@@ -3,11 +3,12 @@ import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
+    const [isReload, setIsReload] = useState(false)
     useEffect(()=> {
-        fetch('products.json')
+        fetch('http://localhost:5000/orders')
         .then(res => res.json())
         .then(data => setOrders(data))
-    },[])
+    },[isReload])
     return (
         <div>
             <h2>Manage All Orders</h2>
@@ -17,14 +18,26 @@ const ManageOrders = () => {
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Job</th>
-                                <th>Favorite Color</th>
+                                <th>Client Name</th>
+                                <th>Company</th>
+                                <th>Address</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Shipment</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                orders.map((order, index) => <ManageOrderRow key={index} index={index} order={order}></ManageOrderRow>)
+                                orders.map((order, index) => <ManageOrderRow 
+                                key={order._id} 
+                                index={index} 
+                                order={order}
+                                isReload={isReload}
+                                setIsReload={setIsReload}
+                                ></ManageOrderRow>)
                             }
                         </tbody>
                     </table>

@@ -1,11 +1,36 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { toast } from 'react-toastify';
+
 
 const AddReview = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const [user] = useAuthState(auth)
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
-        
-        console.log(data);
+        const review = {
+            name: user?.displayName,
+            description: data.description,
+            rating: data.rating,
+            img: data.img
+        }
+        console.log(review);
+        fetch('http://localhost:5000/review', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body:JSON.stringify({review})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.acknowledged){
+                toast('Review Added Successfully')
+                reset()
+            }
+        })
     }
     return (
         <div>
@@ -19,18 +44,11 @@ const AddReview = () => {
                         <input
                             type="text"
                             placeholder="Your Name"
+                            disabled
+                            value={user?.displayName}
                             className="input input-bordered w-full "
-                            {...register("name", {
-                                required: {
-                                    value: true,
-                                    message: 'Name is Required'
-                                }
-                            })}
+                            {...register("name")}
                         />
-                        <label className="label">
-                            {errors.name?.type === 'required' && <span className="label-text-alt text-red-600">{errors.name.message}</span>}
-
-                        </label>
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
@@ -39,23 +57,11 @@ const AddReview = () => {
                         <input
                             type="email"
                             placeholder="Your Email"
+                            value={user?.email}
+                            disabled
                             className="input input-bordered w-full "
-                            {...register("email", {
-                                required: {
-                                    value: true,
-                                    message: 'Email is Required'
-                                },
-                                pattern: {
-                                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                    message: 'Provide a valid Email'
-                                }
-                            })}
+                            {...register("email")}
                         />
-                        <label className="label">
-                            {errors.email?.type === 'required' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
-
-                        </label>
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
@@ -87,7 +93,7 @@ const AddReview = () => {
                             {...register("img", {
                                 required: {
                                     value: true,
-                                    message: 'Description is Required'
+                                    message: 'Image is Required'
                                 }
                                 })}
                         />
