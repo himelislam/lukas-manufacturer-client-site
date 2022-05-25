@@ -19,7 +19,7 @@ const BestSeller = () => {
             <span class="text-lg text-blue-400 font-bold">All The Best Selling Products</span>
             <h2 class="mb-24 text-center text-5xl font-bold font-heading">Our Products</h2>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
                 {
                     products.map(product => <Product key={product._id} product={product}></Product>)
                 }

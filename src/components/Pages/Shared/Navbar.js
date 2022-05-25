@@ -15,7 +15,7 @@ const Navbar = () => {
                     </label>
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <Link to='/'><li className='font-semibold'><a>Home</a></li></Link>
-                        
+                        {user && <Link to='/dashboard'><li className='font-semibold'><a>Dashboard</a></li></Link>}
                         <Link to='/blogs'><li className='font-semibold'><a>Blogs</a></li></Link>
                         <Link to='/portfolio'><li className='font-semibold'><a>Portfolio</a></li></Link>
                     </ul>
