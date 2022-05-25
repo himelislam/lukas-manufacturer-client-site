@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Lukas Manufacturer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Lukas Manufacturer is a Car Parts Manufacturer Company who provides car parts on their website.
 
-## Available Scripts
+[Live Site Link](https://lucas-manufacturer.web.app/).
 
-In the project directory, you can run:
+## Lukas Manufacturer
 
-### `npm start`
+    * Project Details
+        * Lukas Manufacturer is a Car Parts Manufacturer based web application
+        * It Provides a Dashboard for users and admins to do different  functionality
+        * On Dashboard it has a add profile page where user can add their profile and also update their profile 
+        * On Dashboard it also has a My Orders page where user can see his order and can cancel it or can pay the order by clicking pay.
+        * On Dashboard it also has a add review page where user can a add review for the website.
+        * For Admins website's dashboard provides different pages called Manage Orders, Add Product, Make Admin, Manage Products. 
+        * My Profile can use both users and admins to add and update their profile.
+        * On Manage Orders admin can cancel a order, or which orders are already paid admin can ship the order make it as a shipped.
+        * On Add Product page admin can Add A Product.
+        * On Make Admin Page admin can make a user as a admin.
+        * On Manage Products page admin can see all his products and can also delete any product.
+        * User or Admin have to login or signup to use The Dashboard. or else user can see the Home page, Blogs and Portfolio page only.
+        * User can login by Google sign In option, or Creating a new user by Sign up method.
+    * List of Technologies
+        * For Front-end
+            * React (Javascript Library)
+            * Tailwind css
+            * DaisyUI (Component Library)
+            * Tailwind UI Kit (Component Library)
+            * Tailwind Components (Component Library)
+            * Shuffle (Component Library)
+            * React Router
+            * React Hook Form
+            * React Query
+            * React Icons
+            * React Scripts
+            * React Toastify
+            * Firebase
+            * React Firebase Hook
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+        * For Back-end
+            * Node.js
+            * Express js
+            * MongoDB
+            * Stripe
+            * cors
+            * dotenv
+            * nodemon
+            * jsonwebtoken
+            * Heroku 

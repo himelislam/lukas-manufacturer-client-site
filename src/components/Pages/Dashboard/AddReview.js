@@ -34,8 +34,8 @@ const AddReview = () => {
     }
     return (
         <div>
-            <h2 className='text-center text-bold text-3xl'>Add a Review</h2>
-            <div className='lg:mx-20 my-10'>
+            <h2 className='text-center text-bold text-4xl py-6'>Add Review</h2>
+            <div className='lg:mx-20 mb-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
                         <label className="label">

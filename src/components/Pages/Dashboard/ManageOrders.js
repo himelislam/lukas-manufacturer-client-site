@@ -20,8 +20,8 @@ const ManageOrders = () => {
         <div>
             <h2 className='text-center text-bold text-4xl py-4'>Manage All Orders</h2>
             <div>
-                <div class="overflow-x-auto">
-                    <table class="table w-full bg-black">
+                <div className="overflow-x-auto">
+                    <table className="table w-full bg-black">
                         <thead>
                             <tr>
                                 <th>No</th>

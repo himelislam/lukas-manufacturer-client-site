@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const CheckoutForm = ({ order }) => {
+const CheckoutForm = ({ order , total}) => {
     const stripe = useStripe();
     const elements = useElements()
     const [cardError, setCardError] = useState('')
@@ -14,22 +14,24 @@ const CheckoutForm = ({ order }) => {
 
 
      useEffect(() => {
-        if(price){
+        if(total){
+            console.log(total)
             fetch('https://infinite-brook-85062.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ price })
+            body: JSON.stringify({ total })
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 if (data?.clientSecret) {
                     setClientSecret(data.clientSecret);
                 }
             });
         }
-    }, [price])
+    }, [total])
 
 
     const handleSubmit = async (event) => {
@@ -118,7 +120,7 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm btn-success' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-sm btn-success mt-4' type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>

@@ -21,19 +21,20 @@ const Payment = () => {
                 setOrder(data)
             })
     }, [id])
+    const total = parseInt(order.quantity) * parseInt(order.price);
     return (
-        <div>
-            <div class="card w-50 max-w-md bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">Pay for {order.product}</h2>
-                    <p>Product Quantity: {order.quantity}</p>
-                    <p>Please Pay: ${order.price}</p>
+        <div className='flex mt-10 items-center justify-center'>
+            <div className="card w-full max-w-md bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h1 className='text-3xl font-bold text-primary text-center mb-2'>Payment Details</h1>
+                    <h2 className="card-title">Product: {order.product}</h2>
+                    <h2 className="card-title">Price: ${order.price}</h2>
+                    <h2 className="card-title">Quantity: {order.quantity}</h2>
+                    <h2 className="card-title">Total: ${total}</h2>
                 </div>
-            </div>
-            <div class="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">
-                <div class="card-body">
+                <div className="card-body">
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm order={order} />
+                        <CheckoutForm order={order} total={total} />
                     </Elements>
                 </div>
             </div>

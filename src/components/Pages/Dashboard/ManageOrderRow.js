@@ -43,7 +43,7 @@ const ManageOrderRow = ({order, index , setIsReload, isReload,setDeleteOrder}) =
             <td>
                 { (!order.shipped && order.paid ) && <button onClick={()=> setProductId(order._id)} className='btn btn-success btn-xs'>Ship Product</button>}
                 { (order.shipped && order.paid ) && <button onClick={()=> setProductId(order._id)} className='btn btn-success btn-xs'>Shipped</button>}
-                {order.paid ? '' : <label onClick={() => setDeleteOrder(order)} for="delete-order-modal" class="btn btn-xs btn-error">Cancel</label>}
+                {order.paid ? '' : <label onClick={() => setDeleteOrder(order)} for="delete-order-modal" className="btn btn-xs btn-error">Cancel</label>}
             </td>
         </tr>
     );

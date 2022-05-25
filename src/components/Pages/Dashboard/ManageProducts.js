@@ -20,8 +20,8 @@ const ManageProducts = () => {
         <div>
             <h2 className='text-center text-bold text-4xl py-4'>Manage All Products</h2>
             <div>
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         <thead>
                             <tr>
                                 <th>No</th>

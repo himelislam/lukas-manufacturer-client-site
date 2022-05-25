@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from 'react';
 import Review from './Review';
+import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
 
 const Reviews = () => {
-    const [reviews, setReviews] = useState([]);
-    useEffect(()=>{
-        fetch('https://infinite-brook-85062.herokuapp.com/review',{
-            method:'GET',
-            headers:{
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-        .then(res=> res.json())
-        .then(data => setReviews(data))
-    },[]);
-    // const reversed = reviews.reverse();
+    const {data:reviews, isLoading} = useQuery('reviews', ()=> fetch('https://infinite-brook-85062.herokuapp.com/review').then(res=>res.json()))
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
     return (
         <div className='px-10 py-20 2xl:py-40'>
             <div className='text-center w-[500px] mx-auto mb-10'>
-            <span class="text-lg text-secondary font-bold">Reviews That Matters for us Always</span>
-            <h2 class="mb-24 text-center text-5xl font-bold font-heading">Reviews</h2>
+            <span className="text-lg text-secondary font-bold">Reviews That Always Matter for us</span>
+            <h2 className="mb-24 text-center text-5xl font-bold font-heading">Reviews</h2>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
                 {

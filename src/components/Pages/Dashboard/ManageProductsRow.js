@@ -8,7 +8,7 @@ const ManageProductsRow = ({product, index, setDeleteProduct}) => {
             <td>{product.price}</td>
             <td>{product.availableQuantity}</td>
             <td>{product.minimumQuantity}</td>
-            <td><label onClick={() => setDeleteProduct(product)} for="delete-product-modal" class="btn btn-xs btn-error">Delete</label></td>
+            <td><label onClick={() => setDeleteProduct(product)} for="delete-product-modal" className="btn btn-xs btn-error">Delete</label></td>
         </tr>
     );
 };

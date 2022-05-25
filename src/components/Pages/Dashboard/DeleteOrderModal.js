@@ -23,17 +23,17 @@ const DeleteOrderModal = ({deleteOrder, setDeleteOrder, isReload, setIsReload}) 
     }
     return (
         <div>
-            <input type="checkbox" id="delete-order-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <h3 class="font-bold text-lg text-red-500">Are you sure you want to Cancel The Order?</h3>
-                    <p class="font-semibold">Order's Of Mr : {name}</p>
-                    <p class="font-semibold">Product Name : {product}</p>
-                    <p class="font-semibold">Quantity : {quantity}</p>
-                    <p class="font-semibold">Price : {price}</p>
-                    <div class="modal-action">
-                    <button onClick={() => handleCancel()} class="btn btn-sm btn-error">Cancel</button>
-                        <label for="delete-order-modal" class="btn btn-sm">No</label>
+            <input type="checkbox" id="delete-order-modal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg text-red-500">Are you sure you want to Cancel The Order?</h3>
+                    <p className="font-semibold">Order's Of Mr : {name}</p>
+                    <p className="font-semibold">Product Name : {product}</p>
+                    <p className="font-semibold">Quantity : {quantity}</p>
+                    <p className="font-semibold">Price : {price}</p>
+                    <div className="modal-action">
+                    <button onClick={() => handleCancel()} className="btn btn-sm btn-error">Cancel</button>
+                        <label for="delete-order-modal" className="btn btn-sm">No</label>
                     </div>
                 </div>
             </div>

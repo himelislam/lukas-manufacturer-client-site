@@ -80,9 +80,8 @@ const Purchase = () => {
     }
     return (
         <div className='px-10'>
-            <h2>Purchase page {id}</h2>
-            <div class="min-h-screen">
-                <div class="hero-content grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+            <div className="min-h-screen">
+                <div className="hero-content grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
                     <div className='card text-center mx-10 shadow-2xl bg-base-100'>
                         <div className="card-body">
                             <h2 className="text-center text-2xl font-bold">Billing Details</h2>
@@ -179,57 +178,56 @@ const Purchase = () => {
 
                         </div>
                     </div>
-                    <div class="">
-                        <div class="">
-                            <div class="max-w-md mb-6">
-                                <span class="text-xs text-gray-400 tracking-wider">APPLE #3299803</span>
-                                <h2 class="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">{product.name}</h2>
-                                <p class="flex items-center mb-6">
-                                    <span class="mr-2 text-sm text-blue-500 font-medium">$</span>
-                                    <span class="text-3xl text-blue-500 font-medium">{product.price}</span>
+                    <div className="">
+                        <div className="">
+                            <div className="max-w-md mb-6">
+                                <h2 className="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">{product.name}</h2>
+                                <p className="flex items-center mb-6">
+                                    <span className="mr-2 text-sm text-blue-500 font-medium">$</span>
+                                    <span className="text-3xl text-blue-500 font-medium">{product.price}</span>
                                 </p>
-                                <p class="text-lg text-gray-400">{product.description}</p>
+                                <p className="text-lg text-gray-400">{product.description}</p>
                             </div>
-                            <div class="flex mb-6 items-center">
-                                <div class="inline-flex mr-4">
-                                    <button class="mr-1">
-                                        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <div className="flex mb-6 items-center">
+                                <div className="inline-flex mr-4">
+                                    <button className="mr-1">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M20 7.91679H12.4167L10 0.416779L7.58333 7.91679H0L6.18335 12.3168L3.81668 19.5835L10 15.0835L16.1834 19.5835L13.8167 12.3168L20 7.91679Z" fill="#C1C9D3"></path>
                                         </svg>
                                     </button>
-                                    <button class="mr-1">
-                                        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <button className="mr-1">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M20 7.91679H12.4167L10 0.416779L7.58333 7.91679H0L6.18335 12.3168L3.81668 19.5835L10 15.0835L16.1834 19.5835L13.8167 12.3168L20 7.91679Z" fill="#C1C9D3"></path>
                                         </svg>
                                     </button>
-                                    <button class="mr-1">
-                                        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <button className="mr-1">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M20 7.91679H12.4167L10 0.416779L7.58333 7.91679H0L6.18335 12.3168L3.81668 19.5835L10 15.0835L16.1834 19.5835L13.8167 12.3168L20 7.91679Z" fill="#C1C9D3"></path>
                                         </svg>
                                     </button>
-                                    <button class="mr-1">
-                                        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <button className="mr-1">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M20 7.91679H12.4167L10 0.416779L7.58333 7.91679H0L6.18335 12.3168L3.81668 19.5835L10 15.0835L16.1834 19.5835L13.8167 12.3168L20 7.91679Z" fill="#C1C9D3"></path>
                                         </svg>
                                     </button>
                                     <button>
-                                        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M20 7.91679H12.4167L10 0.416779L7.58333 7.91679H0L6.18335 12.3168L3.81668 19.5835L10 15.0835L16.1834 19.5835L13.8167 12.3168L20 7.91679Z" fill="#C1C9D3"></path>
                                         </svg>
                                     </button>
                                 </div>
-                                <span class="text-md text-gray-400">{product.rating}</span>
+                                <span className="text-md text-gray-400">{product.rating}</span>
                             </div>
-                            <div class="mb-6">
-                                <h4 class="mb-3 font-heading font-medium">
+                            <div className="mb-6">
+                                <h4 className="mb-3 font-heading font-medium">
                                     <span>Available Quantity : </span>
-                                    <span class="text-gray-400"> {product.availableQuantity}</span>
+                                    <span className="text-gray-400"> {product.availableQuantity}</span>
                                 </h4>
-                                <h4 class="mb-3 font-heading font-medium">Minimum Order Quantity : {product.minimumQuantity}</h4>
+                                <h4 className="mb-3 font-heading font-medium">Minimum Order Quantity : {product.minimumQuantity}</h4>
                                 
                             </div>
-                            <div class="mb-10">
-                                <h4 class="mb-3 text-xl font-semibold text-green-700">
+                            <div className="mb-10">
+                                <h4 className="mb-3 text-xl font-semibold text-green-700">
                                     <span>Order Quantity : </span>
                                     <span> {finalOrderQuantity}</span>
                                 </h4>
@@ -237,7 +235,7 @@ const Purchase = () => {
                                 <button onClick={()=>setOrderQuantity(parseInt(orderQuantity) - 1)} className='btn btn-sm mx-2'>-</button>
 
 
-                                <input onChange={handleOrder} class="w-24 px-3 py-2 text-center bg-white border-2 border-blue-500 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl" type="text" name='quantity' placeholder={product.minimumQuantity} value={orderQuantity} />
+                                <input onChange={handleOrder} className="w-24 px-3 py-2 text-center bg-white border-2 border-blue-500 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl" type="text" name='quantity' placeholder={product.minimumQuantity} value={orderQuantity} />
 
                                 <button onClick={()=>setOrderQuantity(parseInt(orderQuantity) + 1)} className='btn btn-sm mx-2'>+</button>
                                 <br />

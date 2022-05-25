@@ -21,10 +21,10 @@ const MyOrders = () => {
     },[user, isReload])
     return (
         <div>
-            <h2 className='text-center text-3xl text-bold'>My Orders {orders.length}</h2>
+            <h2 className='text-center text-bold text-4xl py-6'>My Orders</h2>
             <div>
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         <thead>
                             <tr>
                                 <th>No</th>

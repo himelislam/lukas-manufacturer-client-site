@@ -2,52 +2,52 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <section class="py-10 2xl:py-40 bg-primary">
-  <div class="container px-4 mx-auto">
-    <div class="flex flex-wrap -mx-4 pb-10 mb-4 border-b border-gray-400">
-      <div class="w-full lg:w-2/5 px-4 mb-16 lg:mb-0">
-        <span class="text-lg text-blue-400 font-bold">We&apos;re Lukas</span>
-        <h2 class="max-w-sm mt-8 mb-12 text-5xl text-white font-bold font-heading">Thank you for your time</h2>
-        <p class="mb-16 text-gray-300">Lukas is the best parts shop for your car accessories. What kind of parts do you need you can get here.</p>
-        <div><a class="inline-block mb-4 sm:mb-0 sm:mr-4 py-4 px-12 text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full transition duration-200" href="/">Home</a><a class="inline-block px-12 py-4 text-white font-bold border border-gray-200 hover:border-white rounded-full" href="#">Contact</a></div>
+        <section className="py-10 2xl:py-40 bg-primary">
+  <div className="container px-4 mx-auto">
+    <div className="flex flex-wrap -mx-4 pb-10 mb-4 border-b border-gray-400">
+      <div className="w-full lg:w-2/5 px-4 mb-16 lg:mb-0">
+        <span className="text-lg text-blue-400 font-bold">We&apos;re Lukas</span>
+        <h2 className="max-w-sm mt-8 mb-12 text-5xl text-white font-bold font-heading">Thank you for your time</h2>
+        <p className="mb-16 text-gray-300">Lukas is the best parts shop for your car accessories. What kind of parts do you need you can get here.</p>
+        <div><a className="inline-block mb-4 sm:mb-0 sm:mr-4 py-4 px-12 text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full transition duration-200" href="/">Home</a><a className="inline-block px-12 py-4 text-white font-bold border border-gray-200 hover:border-white rounded-full" href="#">Contact</a></div>
       </div>
-      <div class="w-full lg:w-3/5 px-4">
-        <div class="flex flex-wrap -mx-4">
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-16 lg:mb-0">
-            <ul class="text-lg">
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Hello</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Story</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Pricing</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Applications</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Stats</a></li>
-              <li><a class="text-gray-200 hover:text-gray-100" href="#">Blog</a></li>
+      <div className="w-full lg:w-3/5 px-4">
+        <div className="flex flex-wrap -mx-4">
+          <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-16 lg:mb-0">
+            <ul className="text-lg">
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Hello</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Story</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Pricing</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Applications</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Stats</a></li>
+              <li><a className="text-gray-200 hover:text-gray-100" href="#">Blog</a></li>
             </ul>
           </div>
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-16 lg:mb-0">
-            <ul class="text-lg">
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Newsletter</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Features</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">How it works</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">FAQ</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Portfolio</a></li>
-              <li><a class="text-gray-200 hover:text-gray-100" href="#">Team</a></li>
+          <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-16 lg:mb-0">
+            <ul className="text-lg">
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Newsletter</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Features</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">How it works</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">FAQ</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Portfolio</a></li>
+              <li><a className="text-gray-200 hover:text-gray-100" href="#">Team</a></li>
             </ul>
           </div>
-          <div class="w-full lg:w-1/3 px-4">
-            <ul class="text-lg">
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">New account</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Log in</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Testimonials</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Contact</a></li>
-              <li class="mb-6"><a class="text-gray-200 hover:text-gray-100" href="#">Privacy Policy</a></li>
-              <li><a class="text-gray-200 hover:text-gray-100" href="#">Cookies</a></li>
+          <div className="w-full lg:w-1/3 px-4">
+            <ul className="text-lg">
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">New account</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Log in</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Testimonials</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Contact</a></li>
+              <li className="mb-6"><a className="text-gray-200 hover:text-gray-100" href="#">Privacy Policy</a></li>
+              <li><a className="text-gray-200 hover:text-gray-100" href="#">Cookies</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <div class="md:flex justify-between text-center">
-      <p class="text-lg text-gray-200 text-center my-4 md:mb-0">&copy; 2021 Lukas. All rights reserved.</p>
+    <div className="md:flex justify-between text-center">
+      <p className="text-lg text-gray-200 text-center my-4 md:mb-0">&copy; 2021 Lukas. All rights reserved.</p>
     </div>
   </div>
 </section>

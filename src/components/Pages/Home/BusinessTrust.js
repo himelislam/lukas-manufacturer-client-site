@@ -7,36 +7,36 @@ const BusinessTrust = () => {
     return (
         <div className='px-10 py-20 bg-primary'>
             <div className='text-center w-[500px] mx-auto mb-10'>
-            <span class="text-lg text-blue-400 font-bold">Millions of Business Trust Us</span>
-            <h2 class="mb-24 text-center text-5xl font-bold font-heading text-white">Business Summary</h2>
+            <span className="text-lg text-blue-400 font-bold">Millions of Business Trust Us</span>
+            <h2 className="mb-24 text-center text-5xl font-bold font-heading text-white">Business Summary</h2>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                <div class="bg-gray-100 text-gray-800 shadow-xl text-center rounded-xl">
-                    <figure class="px-10 pt-10">
+                <div className="bg-gray-100 text-gray-800 shadow-xl text-center rounded-xl">
+                    <figure className="px-10 pt-10">
                         <GiWorld className='text-6xl mx-auto'/>
                     </figure>
-                    <div class="card-body items-center text-center">
-                        <h2 class="card-title text-5xl">14</h2>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title text-5xl">14</h2>
                         <p>Countries</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-100 text-gray-800 shadow-xl text-center rounded-xl">
-                    <figure class="px-10 pt-10 ">
+                <div className="bg-gray-100 text-gray-800 shadow-xl text-center rounded-xl">
+                    <figure className="px-10 pt-10 ">
                         <IoIosPeople className=' text-6xl mx-auto'/>
                     </figure>
-                    <div class="card-body items-center text-center">
-                        <h2 class="card-title text-5xl">1000+</h2>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title text-5xl">1000+</h2>
                         <p>Happy Clients</p>
                     </div>
                 </div>
                 
-                <div class="bg-gray-100 text-gray-800 shadow-xl text-center rounded-xl">
-                    <figure class="px-10 pt-10 ">
+                <div className="bg-gray-100 text-gray-800 shadow-xl text-center rounded-xl">
+                    <figure className="px-10 pt-10 ">
                         <VscFeedback className='text-6xl mx-auto'/>
                     </figure>
-                    <div class="card-body items-center  text-center">
-                        <h2 class="card-title text-5xl">400+</h2>
+                    <div className="card-body items-center  text-center">
+                        <h2 className="card-title text-5xl">400+</h2>
                         <p>Feedbacks</p>
                     </div>
                 </div>
