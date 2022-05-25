@@ -11,7 +11,7 @@ const Banner = () => {
                             <div className='text-center'>
                                 <h3 className='text-white font-bold text-2xl mb-2'>NEW TECHNOLOGY & BUILD</h3>
                                 <h1 className='text-white font-bold text-5xl mb-3'>WHEELS & TIRES COLLECTION</h1>
-                                <button className='btn btn-error btn-sm text-white'>Book Now</button>                               
+                                <button className='btn btn-secondary btn-sm text-white'>Book Now</button>                               
                             </div>
                             <a href="#slide2" class="btn btn-circle">❯</a>
                         </div>
@@ -23,7 +23,7 @@ const Banner = () => {
                             <div className='text-center'>
                                 <h3 className='text-white font-bold text-2xl mb-2'>NEW TECHNOLOGY & BUILD</h3>
                                 <h1 className='text-white font-bold text-5xl mb-3'>WHEELS & TIRES COLLECTION</h1>
-                                <button className='btn btn-error btn-sm text-white'>Book Now</button>                               
+                                <button className='btn btn-secondary btn-sm text-white'>Book Now</button>                               
                             </div>
                             <a href="#slide3" class="btn btn-circle">❯</a>
                         </div>

@@ -9,7 +9,7 @@ const MyProfile = () => {
     const [serverUser, setServerUser] = useState({});
     const [isReload, setIsReload] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${authUser.email}`)
+        fetch(`https://infinite-brook-85062.herokuapp.com/user/${authUser.email}`)
             .then(res => res.json())
             .then(data => setServerUser(data))
     }, [authUser, isReload])
@@ -25,7 +25,7 @@ const MyProfile = () => {
             linkdin: data.linkdin
         }
         console.log(user);
-        fetch(`http://localhost:5000/user/?email=${email}`, {
+        fetch(`https://infinite-brook-85062.herokuapp.com/user/?email=${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -45,12 +45,12 @@ const MyProfile = () => {
     }
     return (
         <div>
-            <h2 className='text-center text-bold text-4xl'>My Profile</h2>
-            <div className='lg:mx-20 my-10'>
+            <h2 className='text-center text-bold text-4xl py-6'>My Profile</h2>
+            <div className='lg:mx-20 mb-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Name {serverUser.name}</span>
+                            <span className="label-text ">Name</span>
                         </label>
                         <input
                             type="text"
@@ -63,7 +63,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Email {serverUser.email}</span>
+                            <span className="label-text  ">Email</span>
                         </label>
                         <input
                             type="email"
@@ -76,7 +76,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Education</span>
+                            <span className="label-text  ">Education</span>
                         </label>
                         <input
                             type="text"
@@ -87,7 +87,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Location</span>
+                            <span className="label-text  ">Location</span>
                         </label>
                         <input
                             type="text"
@@ -98,7 +98,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Your Phone</span>
+                            <span className="label-text  ">Your Phone</span>
                         </label>
                         <input
                             type="number"
@@ -109,7 +109,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Your Linkdin Profile</span>
+                            <span className="label-text  ">Your Linkdin Profile</span>
                         </label>
                         <input
                             type="text"
@@ -119,7 +119,7 @@ const MyProfile = () => {
                         />
                     </div>
                     {/* {signUpError} */}
-                    <input className='btn w-50 block mx-auto my-8 text-white' type="submit" value='UPDATE PROFILE' />
+                    <input className='btn btn-secondary w-50 block mx-auto my-8 text-black' type="submit" value='UPDATE PROFILE' />
                 </form>
             </div>
         </div>

@@ -7,16 +7,21 @@ const ManageOrders = () => {
     const [deleteOrder, setDeleteOrder] = useState(null);
     const [isReload, setIsReload] = useState(false);
     useEffect(()=> {
-        fetch('http://localhost:5000/orders')
+        fetch('https://infinite-brook-85062.herokuapp.com/orders',{
+            method:'GET',
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
         .then(res => res.json())
         .then(data => setOrders(data))
     },[isReload])
     return (
         <div>
-            <h2>Manage All Orders</h2>
+            <h2 className='text-center text-bold text-4xl py-4'>Manage All Orders</h2>
             <div>
                 <div class="overflow-x-auto">
-                    <table class="table w-full">
+                    <table class="table w-full bg-black">
                         <thead>
                             <tr>
                                 <th>No</th>

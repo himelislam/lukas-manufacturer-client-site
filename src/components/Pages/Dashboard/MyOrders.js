@@ -10,7 +10,12 @@ const MyOrders = () => {
     const [isReload, setIsReload] = useState(false)
     const [orders, setOrders] = useState([]);
     useEffect(()=> {
-        fetch(`http://localhost:5000/order/${user.email}`)
+        fetch(`https://infinite-brook-85062.herokuapp.com/order/${user.email}`,{
+            method:'GET',
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
         .then(res => res.json())
         .then(data => setOrders(data))
     },[user, isReload])

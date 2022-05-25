@@ -27,7 +27,7 @@ const SignUp = () => {
             name: data.name,
             email: data.email
         }
-        fetch('http://localhost:5000/login', {
+        fetch('https://infinite-brook-85062.herokuapp.com/login', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -38,7 +38,7 @@ const SignUp = () => {
             .then(data => {
                 console.log(data);
                 if (data.token && user) {
-                    fetch('http://localhost:5000/user', {
+                    fetch('https://infinite-brook-85062.herokuapp.com/user', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -76,7 +76,7 @@ const SignUp = () => {
             name: gUser?.user?.displayName,
             email: gUser?.user?.email
         }
-        fetch('http://localhost:5000/login', {
+        fetch('https://infinite-brook-85062.herokuapp.com/login', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -87,7 +87,7 @@ const SignUp = () => {
             .then(data => {
                 console.log(data);
                 if (data.token) {
-                    fetch('http://localhost:5000/user', {
+                    fetch('https://infinite-brook-85062.herokuapp.com/user', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

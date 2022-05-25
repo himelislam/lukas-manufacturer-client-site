@@ -4,13 +4,16 @@ import UserRow from './UserRow';
 const MakeAdmin = () => {
     const [users, setUsers] = useState([])
     useEffect(()=> {
-        fetch('http://localhost:5000/user')
+        fetch('https://infinite-brook-85062.herokuapp.com/user', {
+            method: 'GET',
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        })
         .then(res => res.json())
         .then(data => setUsers(data));
     },[])
     return (
         <div>
-            <h2 className=''>Make Admin</h2>
+            <h2 className='text-center text-bold text-4xl py-4'>Make Admin</h2>
             <div>
                 <div class="overflow-x-auto">
                     <table class="table w-full">
@@ -20,7 +23,6 @@ const MakeAdmin = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Make Admin</th>
-                                <th>Remove User</th>
                             </tr>
                         </thead>
                         <tbody>

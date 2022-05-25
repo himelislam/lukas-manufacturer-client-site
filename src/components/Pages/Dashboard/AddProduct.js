@@ -14,7 +14,7 @@ const AddProduct = () => {
             minimumQuantity: data.minimumQuantity
         }
         // console.log(product);
-        fetch('http://localhost:5000/product', {
+        fetch('https://infinite-brook-85062.herokuapp.com/product', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
@@ -32,8 +32,8 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <h2>Add Product</h2>
-            <div className='lg:mx-20 my-10'>
+            <h2 className='text-center text-bold text-4xl py-4'>Add Product</h2>
+            <div className='lg:mx-20 mb-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
                         <label className="label">

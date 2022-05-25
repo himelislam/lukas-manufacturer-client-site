@@ -2,14 +2,14 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <section class="py-10 2xl:py-40 bg-gray-800">
+        <section class="py-10 2xl:py-40 bg-primary">
   <div class="container px-4 mx-auto">
-    <div class="flex flex-wrap -mx-4 pb-24 mb-16 border-b border-gray-400">
+    <div class="flex flex-wrap -mx-4 pb-10 mb-4 border-b border-gray-400">
       <div class="w-full lg:w-2/5 px-4 mb-16 lg:mb-0">
         <span class="text-lg text-blue-400 font-bold">We&apos;re Lukas</span>
         <h2 class="max-w-sm mt-8 mb-12 text-5xl text-white font-bold font-heading">Thank you for your time</h2>
-        <p class="mb-16 text-gray-300">The brown fox jumps over the lazy dog.</p>
-        <div><a class="inline-block mb-4 sm:mb-0 sm:mr-4 py-4 px-12 text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full transition duration-200" href="#">Active demo</a><a class="inline-block px-12 py-4 text-white font-bold border border-gray-200 hover:border-white rounded-full" href="#">Contact</a></div>
+        <p class="mb-16 text-gray-300">Lukas is the best parts shop for your car accessories. What kind of parts do you need you can get here.</p>
+        <div><a class="inline-block mb-4 sm:mb-0 sm:mr-4 py-4 px-12 text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full transition duration-200" href="/">Home</a><a class="inline-block px-12 py-4 text-white font-bold border border-gray-200 hover:border-white rounded-full" href="#">Contact</a></div>
       </div>
       <div class="w-full lg:w-3/5 px-4">
         <div class="flex flex-wrap -mx-4">
@@ -46,19 +46,8 @@ const Footer = () => {
         </div>
       </div>
     </div>
-    <div class="md:flex justify-between">
-      <p class="text-lg text-gray-200 mb-8 md:mb-0">&copy; 2021 Shuffle. All rights reserved.</p>
-      <div class="flex items-center">
-        <a class="inline-block mr-2" href="#">
-          <img class="h-12" src="zospace-assets/logos/facebook.svg" alt=""/>
-        </a>
-        <a class="inline-block mr-2" href="#">
-          <img class="h-12" src="zospace-assets/logos/instagram.svg" alt=""/>
-        </a>
-        <a class="inline-block" href="#">
-          <img class="h-12" src="zospace-assets/logos/twitter.svg" alt=""/>
-        </a>
-      </div>
+    <div class="md:flex justify-between text-center">
+      <p class="text-lg text-gray-200 text-center my-4 md:mb-0">&copy; 2021 Lukas. All rights reserved.</p>
     </div>
   </div>
 </section>

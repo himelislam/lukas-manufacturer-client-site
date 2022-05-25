@@ -22,7 +22,8 @@ const Login = () => {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
         const email = data.email;
-        fetch('http://localhost:5000/login',{
+        if(email){
+            fetch('https://infinite-brook-85062.herokuapp.com/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -37,6 +38,7 @@ const Login = () => {
             }
             localStorage.setItem('accessToken', data.accessToken)
         })
+        }
     }
 
     if(loading || gLoading){
@@ -52,13 +54,14 @@ const Login = () => {
 
     if(sUser || gUser){
         console.log(sUser, gUser);
-        const email = gUser.user.email;
+        const email = gUser?.user?.email;
         console.log(email);
         const user = {
             name : gUser?.user?.displayName,
             email : gUser?.user?.email
         }
-        fetch('http://localhost:5000/login',{
+       if(user){
+        fetch('https://infinite-brook-85062.herokuapp.com/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -67,8 +70,8 @@ const Login = () => {
         })
         .then(res => res.json())
         .then(data => {
-            if(data.token){
-                fetch('http://localhost:5000/user', {
+            if(data.token && user){
+                fetch('https://infinite-brook-85062.herokuapp.com/user', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -85,6 +88,7 @@ const Login = () => {
             }
             localStorage.setItem('accessToken', data.accessToken)
         })
+       }
         
     }
 

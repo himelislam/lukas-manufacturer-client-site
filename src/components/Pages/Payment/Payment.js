@@ -10,7 +10,12 @@ const Payment = () => {
     const { id } = useParams();
     const [order, setOrder] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/order/?id=${id}`)
+        fetch(`https://infinite-brook-85062.herokuapp.com/order/?id=${id}`,{
+            method:'GET',
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setOrder(data)

@@ -2,13 +2,15 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const CancelOrderModal = ({setIsReload, cancelOrder, setCancelOrder, isReload}) => {
-    const {_id, product,quantity, price,email} = cancelOrder;
+    const {_id, product,quantity, price} = cancelOrder;
 
     const handleCancel = ()=>{
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://infinite-brook-85062.herokuapp.com/order/${_id}`, {
             method: 'DELETE',
             headers:{
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
             }
         })
         .then(res => res.json())

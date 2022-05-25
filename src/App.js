@@ -45,7 +45,7 @@ function App() {
         <Route path='signUp' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );

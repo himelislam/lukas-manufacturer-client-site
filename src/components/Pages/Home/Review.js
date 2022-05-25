@@ -5,10 +5,10 @@ const Review = ({ review }) => {
         <div>
             <section class=" bg-blueGray-100 rounded-t-10xl overflow-hidden">
                 <div class="container px-4 mx-auto">
-                    <div class="min-h-[320px] mb-4 md:mb-4 shadow-lg rounded-t-8xl rounded-b-5xl overflow-hidden">
-                        <div class="pt-3 pb-3 md:pb-1 px-4 md:px-16 bg-white bg-opacity-40">
+                    <div class="rounded-xl mb-4 md:mb-4 shadow-lg rounded-t-8xl rounded-b-5xl overflow-hidden">
+                        <div class="pt-3 pb-3 md:pb-1 px-4 md:px-16 bg-gray-100">
                             <div class="">
-                                <div class="avatar w-full">
+                                <div class="avatar w-full mt-4">
                                     <div class="w-20 mx-auto mb-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                         <img src={review.img} />
                                     </div>
@@ -44,7 +44,7 @@ const Review = ({ review }) => {
                                     </a>
                                 </div>
                         </div>
-                        <div class="px-8 md:px-6 pt-2 pb-4 bg-white">
+                        <div class="px-8 md:px-6 pt-2 pb-4 bg-gray-100 min-h-[150px]">
                             <div class="flex flex-wrap">
                                 <div class="w-full ">
                                     <p class="mb-2 text-darkBlueGray-400 text-center">{review.description}</p>    

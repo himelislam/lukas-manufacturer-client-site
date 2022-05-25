@@ -10,7 +10,12 @@ const Purchase = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     useEffect(()=>{
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://infinite-brook-85062.herokuapp.com/products/${id}`,{
+            method:'GET',
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
         .then(res => res.json())
         .then(data => setProduct(data))
     },[id])
@@ -32,10 +37,11 @@ const Purchase = () => {
             paid: false
         }
         console.log(order);
-        fetch('http://localhost:5000/order', {
+        fetch('https://infinite-brook-85062.herokuapp.com/order', {
             method: 'POST',
             headers:{
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
             body:JSON.stringify({order})
         })
