@@ -16,7 +16,7 @@ const OrderRow = ({order, index, setCancelOrder}) => {
                 {!order.paid && <label onClick={()=> navigate(`/myorders/payment/${order._id}`)} for="delete-confirm-modal" className="btn btn-xs btn-success">Pay</label>}
                 {order.paid && <>
                     <p className='text-success'><span>Paid</span></p>
-                    <p className='text-success'>Transaction Id<span>{order?.transactionId}</span></p>
+                    <p className='text-success'>Transaction Id: <small className='text-red-600'>{order?.transactionId}</small></p>
                 </>}
             </td>
         </tr>

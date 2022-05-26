@@ -6,7 +6,7 @@ import { VscFeedback } from 'react-icons/vsc';
 const BusinessTrust = () => {
     return (
         <div className='px-10 py-20 bg-primary'>
-            <div className='text-center w-[500px] mx-auto mb-10'>
+            <div className='text-center mx-auto mb-10'>
             <span className="text-lg text-blue-400 font-bold">Millions of Business Trust Us</span>
             <h2 className="mb-24 text-center text-5xl font-bold font-heading text-white">Business Summary</h2>
             </div>

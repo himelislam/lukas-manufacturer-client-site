@@ -24,7 +24,6 @@ const MyProfile = () => {
             phone: data.phone,
             linkdin: data.linkdin
         }
-        console.log(user);
         fetch(`https://infinite-brook-85062.herokuapp.com/user/?email=${email}`, {
             method: 'PUT',
             headers: {
@@ -34,7 +33,6 @@ const MyProfile = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount > 0) {
                     toast('Your Profile Updated Successfully');
                     reset();
@@ -118,8 +116,7 @@ const MyProfile = () => {
                             {...register("linkdin")}
                         />
                     </div>
-                    {/* {signUpError} */}
-                    <input className='btn btn-secondary w-50 block mx-auto my-8 text-black' type="submit" value='UPDATE PROFILE' />
+                    <input className='btn btn-primary w-50 block mx-auto my-8' type="submit" value='UPDATE PROFILE' />
                 </form>
             </div>
         </div>

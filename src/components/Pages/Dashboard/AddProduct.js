@@ -13,7 +13,6 @@ const AddProduct = () => {
             price: data.price,
             minimumQuantity: data.minimumQuantity
         }
-        // console.log(product);
         fetch('https://infinite-brook-85062.herokuapp.com/product', {
             method: 'POST',
             headers:{
@@ -23,7 +22,6 @@ const AddProduct = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data.acknowledged){
                 toast('Product Added')
                 reset()

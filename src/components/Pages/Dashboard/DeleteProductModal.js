@@ -14,7 +14,6 @@ const DeleteProductModal = ({isReload, setIsReload, deleteProduct, setDeleteProd
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data.deletedCount>0){
                 toast(`${name} is Deleted`)
                 setDeleteProduct(null);

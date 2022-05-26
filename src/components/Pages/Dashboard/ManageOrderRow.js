@@ -14,7 +14,6 @@ const ManageOrderRow = ({order, index , setIsReload, isReload,setDeleteOrder}) =
         })
         .then(res=> res.json())
         .then(data => {
-            console.log(data);
             if(data.modifiedCount > 0){
                 toast('Product Shipped Successfully')
                 setIsReload(!isReload)

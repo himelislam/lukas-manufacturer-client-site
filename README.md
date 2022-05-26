@@ -34,6 +34,7 @@ Lukas Manufacturer is a Car Parts Manufacturer Company who provides car parts on
             * React Icons
             * React Scripts
             * React Toastify
+            * React Rating Stars Component
             * Firebase
             * React Firebase Hook
 

@@ -10,7 +10,7 @@ const Banner = () => {
                             <a href="#slide4" className="btn btn-circle">❮</a>
                             <div className='text-center'>
                                 <h3 className='text-white font-bold text-xl lg:text-2xl mb-2'>NEW TECHNOLOGY & BUILD</h3>
-                                <h1 className='text-white font-bold text-2xl lg:text-5xl mb-3'>WHEELS & TIRES COLLECTION</h1>
+                                <h1 className='text-white font-bold text-2xl lg:text-5xl mb-3'>WHEELS & PARTS COLLECTION</h1>
                                 <button className='btn btn-secondary btn-sm text-white'>Book Now</button>                               
                             </div>
                             <a href="#slide2" className="btn btn-circle">❯</a>
@@ -21,8 +21,8 @@ const Banner = () => {
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                             <a href="#slide1" className="btn btn-circle">❮</a>
                             <div className='text-center'>
-                                <h3 className='text-white font-bold text-2xl mb-2'>NEW TECHNOLOGY & BUILD</h3>
-                                <h1 className='text-white font-bold text-5xl mb-3'>WHEELS & TIRES COLLECTION</h1>
+                                <h3 className='text-white font-bold text-xl lg:text-2xl mb-2'>NEW TECHNOLOGY & BUILD</h3>
+                                <h1 className='text-white font-bold text-2xl lg:text-5xl mb-3'>WHEELS & PARTS COLLECTION</h1>
                                 <button className='btn btn-secondary btn-sm text-white'>Book Now</button>                               
                             </div>
                             <a href="#slide3" className="btn btn-circle">❯</a>

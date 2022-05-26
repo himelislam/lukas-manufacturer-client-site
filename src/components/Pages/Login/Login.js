@@ -32,7 +32,6 @@ const Login = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data.token){
                 navigate(from, { replace: true });
             }
@@ -53,9 +52,7 @@ const Login = () => {
 
 
     if(sUser || gUser){
-        console.log(sUser, gUser);
         const email = gUser?.user?.email;
-        console.log(email);
         const user = {
             name : gUser?.user?.displayName,
             email : gUser?.user?.email
@@ -80,7 +77,6 @@ const Login = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
                             if(data.acknowledged){
                                 navigate(from, { replace: true });
                             }

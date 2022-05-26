@@ -15,7 +15,6 @@ const AddReview = () => {
             rating: data.rating,
             img: data.img
         }
-        console.log(review);
         fetch('https://infinite-brook-85062.herokuapp.com/review', {
             method: 'POST',
             headers:{
@@ -25,7 +24,6 @@ const AddReview = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data.acknowledged){
                 toast('Review Added Successfully')
                 reset()

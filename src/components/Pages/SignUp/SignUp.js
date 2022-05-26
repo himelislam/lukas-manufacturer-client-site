@@ -19,7 +19,6 @@ const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const from = location.state?.from?.pathname || '/';
     const onSubmit = async data => {
-        console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
         const email = data.email;
@@ -36,7 +35,6 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.token && user) {
                     fetch('https://infinite-brook-85062.herokuapp.com/user', {
                         method: 'POST',
@@ -47,7 +45,6 @@ const SignUp = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
                             if(data.acknowledged){
                                 navigate(from, { replace: true });
                             }
@@ -70,7 +67,6 @@ const SignUp = () => {
 
 
     if (cUser || gUser) {
-        console.log(cUser, gUser);
         const email = gUser?.user?.email;
         const user = {
             name: gUser?.user?.displayName,
@@ -85,7 +81,6 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.token) {
                     fetch('https://infinite-brook-85062.herokuapp.com/user', {
                         method: 'PUT',
@@ -96,7 +91,6 @@ const SignUp = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
                             if(data.acknowledged){
                                 navigate(from, { replace: true });
                             }

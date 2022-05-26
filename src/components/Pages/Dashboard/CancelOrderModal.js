@@ -15,7 +15,6 @@ const CancelOrderModal = ({setIsReload, cancelOrder, setCancelOrder, isReload}) 
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data.deletedCount>0){
                 toast(`Your Order For ${product} is Canceled`)
                 setCancelOrder(null);

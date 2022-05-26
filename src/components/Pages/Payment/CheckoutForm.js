@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { toast } from 'react-toastify';
 
 const CheckoutForm = ({ order , total}) => {
     const stripe = useStripe();
@@ -10,12 +11,11 @@ const CheckoutForm = ({ order , total}) => {
     const [clientSecret, setClientSecret] = useState('')
 
 
-    const { _id, price, name, email } = order;
+    const { _id, name, email } = order;
 
 
      useEffect(() => {
         if(total){
-            console.log(total)
             fetch('https://infinite-brook-85062.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
@@ -25,7 +25,6 @@ const CheckoutForm = ({ order , total}) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data?.clientSecret) {
                     setClientSecret(data.clientSecret);
                 }
@@ -53,7 +52,6 @@ const CheckoutForm = ({ order , total}) => {
         });
 
         if (error) {
-            console.log(error);
             setCardError(error?.message);
             setCardSuccess('')
         }
@@ -79,7 +77,6 @@ const CheckoutForm = ({ order , total}) => {
         }
         else {
             setCardError('')
-            console.log(paymentIntent);
             setTransactionId(paymentIntent.id)
             setCardSuccess('Your Payment is Completed')
 
@@ -97,7 +94,9 @@ const CheckoutForm = ({ order , total}) => {
             })
             .then(res=> res.json())
             .then(data => {
-                console.log(data);
+                if(data.acknowledged){
+                    // toast('Your Payment is Completed')
+                }
             })
         }
     }
@@ -128,9 +127,9 @@ const CheckoutForm = ({ order , total}) => {
                 cardError && <p className='text-red-600'>{cardError}</p>
             }
             {
-                cardSuccess && <div>
+                cardSuccess && <div className='text-center'>
                     <p className='text-green-600'>{cardSuccess}</p>
-                    <p className='text-orange-600'>Your Transaction Id: {transactionId}</p>
+                    <p className='text-green-600'>Your Transaction Id: <small className='text-red-600'>{transactionId}</small></p>
                 </div>
             }
         </div>

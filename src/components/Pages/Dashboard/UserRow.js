@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const UserRow = ({user, index}) => {
     const {email, role} = user;
@@ -10,16 +11,14 @@ const UserRow = ({user, index}) => {
             }
         })
         .then(res => {
-            console.log(res);
             if(res.status === 403){
-                alert('failed to make an admin')
+                toast('failed to make an admin')
             }
             return res.json();
         })
         .then(data => {
-            console.log(data);
             if(data.modifiedCount > 0){
-                alert('Successfully made as an admin')
+                toast('Successfully made as an admin')
             }
         })
     }
