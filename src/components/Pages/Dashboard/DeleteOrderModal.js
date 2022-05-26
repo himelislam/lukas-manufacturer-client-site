@@ -8,7 +8,8 @@ const DeleteOrderModal = ({deleteOrder, setDeleteOrder, isReload, setIsReload}) 
         fetch(`https://infinite-brook-85062.herokuapp.com/order/${_id}`, {
             method: 'DELETE',
             headers:{
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
         .then(res => res.json())
