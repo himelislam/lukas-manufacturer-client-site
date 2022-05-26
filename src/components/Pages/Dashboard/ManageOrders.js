@@ -16,6 +16,7 @@ const ManageOrders = () => {
         .then(res => res.json())
         .then(data => setOrders(data))
     },[isReload])
+    console.log(orders)
     return (
         <div>
             <h2 className='text-center text-bold text-4xl py-4'>Manage All Orders</h2>
