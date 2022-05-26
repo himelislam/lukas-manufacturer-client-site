@@ -33,7 +33,9 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
             if(data.token){
-                navigate(from, { replace: true });
+                if(sUser){
+                    navigate(from, { replace: true });
+                }
             }
             localStorage.setItem('accessToken', data.accessToken)
         })
@@ -147,7 +149,7 @@ const Login = () => {
                                 {signInError}
                         <input className='btn w-full max-w-xs text-white' type="submit" value='Login' />
                     </form>
-                    <p><small>New to Doctors Portal? <Link to='/signUp' className='text-primary'>Create New Account</Link></small></p>
+                    <p><small>New to Doctors Portal? <Link to='/signUp' className='text-success'>Create New Account</Link></small></p>
                     <div className="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Conitnue With Google</button>
                 </div>
