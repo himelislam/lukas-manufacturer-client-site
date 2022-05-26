@@ -9,7 +9,7 @@ const Product = ({ product }) => {
             </figure>
             <div className="px-4 py-4 items-center text-center">
                 <h2 className="font-semibold text-xl">{product.name}</h2>
-                <p className='font-light mb-[-10px]'><small>{product?.description.slice(0, 150)}</small></p>
+                <p className='font-light mb-[-10px]'><small>{product?.description.slice(0, 120)}{'...'}</small></p>
                 <p className='mt-2'><small>Minimum Order Quantity: {product.minimumQuantity}</small></p>
                 <p><small>Available Quantity: {product.availableQuantity}</small></p>
                 <div className="items-center">

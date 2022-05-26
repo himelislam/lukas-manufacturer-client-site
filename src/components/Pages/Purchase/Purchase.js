@@ -61,8 +61,10 @@ const Purchase = () => {
     const handleOrderQuantity = event =>{
         event.preventDefault();
         const quantity = event.target.quantity.value;
-        setFinalOrderQuantity(quantity)
-        toast('Product Quantity Updated');
+        if(quantity){
+            setFinalOrderQuantity(quantity)
+            toast('Product Quantity Updated');
+        }
         
     }
     
@@ -211,7 +213,7 @@ const Purchase = () => {
                                 <br />
                                 {quantityError}
                                 <br />
-                                <button className={orderQuantity > (minimum - 1) && orderQuantity < available ? 'btn btn-success ' : 'btn btn-success btn-disabled'}><input type="submit" value="Set Order Quantity"/></button>
+                                <button className={orderQuantity > (minimum - 1) && orderQuantity < (available + 1) ? 'btn btn-success ' : 'btn btn-success btn-disabled'}><input type="submit" value="Set Order Quantity"/></button>
                                 </form>
                             </div>
                         </div>
