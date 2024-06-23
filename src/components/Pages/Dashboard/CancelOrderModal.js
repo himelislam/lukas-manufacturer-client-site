@@ -5,7 +5,7 @@ const CancelOrderModal = ({setIsReload, cancelOrder, setCancelOrder, isReload}) 
     const {_id, product,quantity, price} = cancelOrder;
 
     const handleCancel = ()=>{
-        fetch(`https://infinite-brook-85062.herokuapp.com/order/${_id}`, {
+        fetch(`https://lukas-manufacturer-server-site.vercel.app/order/${_id}`, {
             method: 'DELETE',
             headers:{
                 'content-type': 'application/json',

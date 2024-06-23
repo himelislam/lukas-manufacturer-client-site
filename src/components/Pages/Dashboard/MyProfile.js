@@ -9,7 +9,7 @@ const MyProfile = () => {
     const [serverUser, setServerUser] = useState({});
     const [isReload, setIsReload] = useState(false);
     useEffect(() => {
-        fetch(`https://infinite-brook-85062.herokuapp.com/user/${authUser.email}`)
+        fetch(`https://lukas-manufacturer-server-site.vercel.app/user/${authUser.email}`)
             .then(res => res.json())
             .then(data => setServerUser(data))
     }, [authUser, isReload])
@@ -24,7 +24,7 @@ const MyProfile = () => {
             phone: data.phone,
             linkdin: data.linkdin
         }
-        fetch(`https://infinite-brook-85062.herokuapp.com/user/?email=${email}`, {
+        fetch(`https://lukas-manufacturer-server-site.vercel.app/user/?email=${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -5,7 +5,7 @@ const ManageOrderRow = ({order, index , setIsReload, isReload,setDeleteOrder}) =
     const [productId, setProductId] = useState('');
     useEffect(()=>{
         if(productId){
-            fetch(`https://infinite-brook-85062.herokuapp.com/order`,{
+            fetch(`https://lukas-manufacturer-server-site.vercel.app/order`,{
             method: 'PATCH',
             headers:{
                 'content-type': 'application/json'

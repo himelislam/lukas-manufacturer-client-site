@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
 const Reviews = () => {
-    const {data:reviews, isLoading} = useQuery('reviews', ()=> fetch('https://infinite-brook-85062.herokuapp.com/review').then(res=>res.json()))
+    const {data:reviews, isLoading} = useQuery('reviews', ()=> fetch('https://lukas-manufacturer-server-site.vercel.app/review').then(res=>res.json()))
 
     if(isLoading){
         return <Loading></Loading>
@@ -16,7 +16,7 @@ const Reviews = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
                 {
-                    reviews.map(review => <Review key={review._id} review={review}></Review>)
+                    reviews?.map(review => <Review key={review._id} review={review}></Review>)
                 }
             </div>
         </div>

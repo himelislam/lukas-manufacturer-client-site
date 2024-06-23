@@ -7,7 +7,7 @@ const ManageOrders = () => {
     const [deleteOrder, setDeleteOrder] = useState(null);
     const [isReload, setIsReload] = useState(false);
     useEffect(()=> {
-        fetch('https://infinite-brook-85062.herokuapp.com/orders',{
+        fetch('https://lukas-manufacturer-server-site.vercel.app/orders',{
             method:'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

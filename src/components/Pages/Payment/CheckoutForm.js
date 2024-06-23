@@ -16,7 +16,7 @@ const CheckoutForm = ({ order , total}) => {
 
      useEffect(() => {
         if(total){
-            fetch('https://infinite-brook-85062.herokuapp.com/create-payment-intent', {
+            fetch('https://lukas-manufacturer-server-site.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

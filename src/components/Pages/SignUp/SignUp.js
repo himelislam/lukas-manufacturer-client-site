@@ -26,7 +26,7 @@ const SignUp = () => {
             name: data.name,
             email: data.email
         }
-        fetch('https://infinite-brook-85062.herokuapp.com/login', {
+        fetch('https://lukas-manufacturer-server-site.vercel.app/login', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.token && user) {
-                    fetch('https://infinite-brook-85062.herokuapp.com/user', {
+                    fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -48,6 +48,7 @@ const SignUp = () => {
                             if(data.acknowledged){
                                 navigate(from, { replace: true });
                             }
+                            window.location.reload()
                         });
                 }
                 localStorage.setItem('accessToken', data.accessToken)
@@ -72,7 +73,7 @@ const SignUp = () => {
             name: gUser?.user?.displayName,
             email: gUser?.user?.email
         }
-        fetch('https://infinite-brook-85062.herokuapp.com/login', {
+        fetch('https://lukas-manufacturer-server-site.vercel.app/login', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -82,7 +83,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.token) {
-                    fetch('https://infinite-brook-85062.herokuapp.com/user', {
+                    fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

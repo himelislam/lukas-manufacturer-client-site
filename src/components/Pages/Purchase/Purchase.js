@@ -10,7 +10,7 @@ const Purchase = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     useEffect(()=>{
-        fetch(`https://infinite-brook-85062.herokuapp.com/products/${id}`,{
+        fetch(`https://lukas-manufacturer-server-site.vercel.app/products/${id}`,{
             method:'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const Purchase = () => {
             price : product.price,
             paid: false
         }
-        fetch('https://infinite-brook-85062.herokuapp.com/order', {
+        fetch('https://lukas-manufacturer-server-site.vercel.app/order', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json',
@@ -80,7 +80,7 @@ const Purchase = () => {
     return (
         <div className='px-10'>
             <div className="min-h-screen">
-                <div className="hero-content grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+                <div className="hero-content grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 mx-auto">
                     <div className='card text-center mx-10 shadow-2xl bg-base-100'>
                         <div className="card-body">
                             <h2 className="text-center text-2xl font-bold">Billing Details</h2>
@@ -177,11 +177,11 @@ const Purchase = () => {
 
                         </div>
                     </div>
-                    <div className="">
+                    <div className="mx-auto border-slate-400 border-2 rounded-lg w-96 text-center">
                         <div className="">
                             <div className="max-w-md mb-6">
                                 <h2 className="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">{product.name}</h2>
-                                <p className="flex items-center mb-6">
+                                <p className=" mb-6 text-center">
                                     <span className="mr-2 text-sm text-blue-500 font-medium">$</span>
                                     <span className="text-3xl text-blue-500 font-medium">{product.price}</span>
                                 </p>
@@ -217,6 +217,9 @@ const Purchase = () => {
                                 </form>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <img className='w-full' src={product.img}></img>
                     </div>
                 </div>
             </div>

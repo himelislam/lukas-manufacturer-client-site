@@ -15,7 +15,7 @@ const AddReview = () => {
             rating: data.rating,
             img: data.img
         }
-        fetch('https://infinite-brook-85062.herokuapp.com/review', {
+        fetch('https://lukas-manufacturer-server-site.vercel.app/review', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

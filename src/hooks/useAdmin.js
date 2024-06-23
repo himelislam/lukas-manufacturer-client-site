@@ -8,7 +8,7 @@ const useAdmin = user =>{
     useEffect(()=>{
         const email = user?.email;
         if(email){
-            fetch(`https://infinite-brook-85062.herokuapp.com/admin/${email}`, {
+            fetch(`https://lukas-manufacturer-server-site.vercel.app/admin/${email}`, {
                 method: 'GET',
                 headers:{
                     'content-type' : 'application.json',
@@ -20,6 +20,8 @@ const useAdmin = user =>{
                 setAdmin(data.admin);
                 setAdminLoading(false)
             })
+        }else{
+            console.log("hello from useAdmin");
         }
     },[user])
 

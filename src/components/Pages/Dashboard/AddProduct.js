@@ -13,7 +13,7 @@ const AddProduct = () => {
             price: data.price,
             minimumQuantity: data.minimumQuantity
         }
-        fetch('https://infinite-brook-85062.herokuapp.com/product', {
+        fetch('https://lukas-manufacturer-server-site.vercel.app/product', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

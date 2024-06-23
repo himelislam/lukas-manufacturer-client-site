@@ -23,7 +23,7 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password);
         const email = data.email;
         if(email){
-            fetch('https://infinite-brook-85062.herokuapp.com/login',{
+            fetch('https://lukas-manufacturer-server-site.vercel.app/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -60,7 +60,7 @@ const Login = () => {
             email : gUser?.user?.email
         }
        if(user){
-        fetch('https://infinite-brook-85062.herokuapp.com/login',{
+        fetch('https://lukas-manufacturer-server-site.vercel.app/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -70,7 +70,7 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
             if(data.token && user){
-                fetch('https://infinite-brook-85062.herokuapp.com/user', {
+                fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
