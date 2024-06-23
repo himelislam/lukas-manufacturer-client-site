@@ -5,7 +5,7 @@ const DeleteOrderModal = ({deleteOrder, setDeleteOrder, isReload, setIsReload}) 
     const {_id, product,quantity, price, name} = deleteOrder;
 
     const handleCancel = ()=>{
-        fetch(`https://lukas-manufacturer-server-site.vercel.app/order/${_id}`, {
+        fetch(`http://localhost:4000/order/${_id}`, {
             method: 'DELETE',
             headers:{
                 'content-type': 'application/json',

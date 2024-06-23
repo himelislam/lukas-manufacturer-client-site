@@ -10,7 +10,7 @@ const Purchase = () => {
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     useEffect(()=>{
-        fetch(`https://lukas-manufacturer-server-site.vercel.app/products/${id}`,{
+        fetch(`http://localhost:4000/products/${id}`,{
             method:'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const Purchase = () => {
             price : product.price,
             paid: false
         }
-        fetch('https://lukas-manufacturer-server-site.vercel.app/order', {
+        fetch('http://localhost:4000/order', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json',
