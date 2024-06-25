@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 
 const Navbar = () => {
     const [user] = useAuthState(auth);
+    const [orders, setOrders] = useState([]);
     const [collapse, setCollapse] = useState(false)
     const handleSignOut = () => {
         signOut(auth);
@@ -34,7 +35,18 @@ const Navbar = () => {
         };
     }, [location]);
 
-    console.log(collapse, user?.photoURL);
+    useEffect(()=> {
+        fetch(`http://localhost:4000/order/${user?.email}`,{
+            method:'GET',
+            headers:{
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => setOrders(data))
+    },[location, user])
+
+    console.log(collapse, user?.photoURL, orders?.length);
     return (
         // <div className="navbar bg-base-100 px-10 py-4">
         //     <div className="navbar-start">
@@ -103,7 +115,7 @@ const Navbar = () => {
                                         <Link to='/dashboard'><a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a></Link>
                                     </li>
                                     <li>
-                                        <Link to='/dashboard/myorders'><a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Orders</a></Link>
+                                        <Link to='/dashboard/myorders'><a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Orders ({orders?.length})</a></Link>
                                     </li>
                                     <li>
                                         <Link to='/dashboard/addreview'><a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Reviews</a></Link>
