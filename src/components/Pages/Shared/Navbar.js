@@ -3,8 +3,10 @@ import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import { useGlobalState } from '../../../context/GlobalStateContext';
 
 const Navbar = () => {
+    const {state, setState} = useGlobalState();
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
     const [collapse, setCollapse] = useState(false)
@@ -44,9 +46,10 @@ const Navbar = () => {
         })
         .then(res => res.json())
         .then(data => setOrders(data))
-    },[location, user])
+    },[location, user, state])
 
-    console.log(collapse, user?.photoURL, orders?.length);
+    // console.log(collapse, user?.photoURL, orders?.length, );
+    console.log(state, "state changed from navbar");
     return (
         // <div className="navbar bg-base-100 px-10 py-4">
         //     <div className="navbar-start">
@@ -104,6 +107,7 @@ const Navbar = () => {
                                 <span className="sr-only">Open user menu</span>
                                 <img className="w-8 h-8 rounded-full" src={user?.photoURL ? user?.photoURL : "https://img.freepik.com/premium-vector/student-avatar-illustration-user-profile-icon-youth-avatar_118339-4395.jpg"} alt="user photo" />
                             </button>
+                            <Link to='/dashboard/myorders'><span className='text-gray-300 border-2 border-gray-200 rounded-full text-sm flex items-center justify-center w-5 h-5 mb-5 cursor-pointer'>{orders?.length}</span></Link>
                             {/* <!-- Dropdown menu --> */}
                             <div ref={dropdownRef} className={`${collapse ? 'block' : 'hidden'} z-50 absolute top-10 right-24 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`} id="user-dropdown">
                                 <div className="px-4 py-3">

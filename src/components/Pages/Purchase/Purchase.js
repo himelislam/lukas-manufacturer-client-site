@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import { useGlobalState } from '../../../context/GlobalStateContext';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
+    const {state, setState} = useGlobalState();
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     useEffect(()=>{
@@ -48,6 +50,7 @@ const Purchase = () => {
         .then(data => {
             if(data.acknowledged){
                 toast('Your Order Placed Successfully')
+                setState((prev)=>({...prev, order: !prev.order}));
                 reset()
             }
         })

@@ -8,11 +8,13 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
+import { GlobalStateProvider } from './context/GlobalStateContext';
 
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <GlobalStateProvider>
   <QueryClientProvider client={queryClient}>
     <React.StrictMode>
       <BrowserRouter>
@@ -20,6 +22,7 @@ root.render(
       </BrowserRouter>
     </React.StrictMode>
   </QueryClientProvider>
+  </GlobalStateProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
