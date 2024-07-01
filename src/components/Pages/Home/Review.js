@@ -5,7 +5,7 @@ const Review = ({ review }) => {
     return (
         <div>
             <section className=" bg-blueGray-100 rounded-t-10xl overflow-hidden">
-                <div className="container px-4 mx-auto">
+                <div className="container mx-auto">
                     <div className="rounded-xl mb-4 md:mb-4 shadow-lg rounded-t-8xl rounded-b-5xl overflow-hidden">
                         <div className="pt-3 pb-3 md:pb-1 px-4 md:px-16 bg-gray-100">
                             <div className="">

@@ -81,7 +81,7 @@ const Purchase = () => {
         quantityError = <p className='text-red-600'>{`Sorry! The Minimum Order Quantity is ${minimum}`}</p>
     }
     return (
-        <div className='px-10'>
+        <div className='px-10 bg-black'>
             <div className="min-h-screen">
                 <div className="hero-content grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 mx-auto">
                     <div className='card text-center mx-10 shadow-2xl bg-base-100'>
@@ -180,7 +180,7 @@ const Purchase = () => {
 
                         </div>
                     </div>
-                    <div className="mx-auto border-slate-400 border-2 rounded-lg w-96 text-center">
+                    <div className="mx-auto bg-gray-200 border-slate-400 border-2 rounded-lg w-96 text-center">
                         <div className="">
                             <div className="max-w-md mb-6">
                                 <h2 className="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">{product.name}</h2>
