@@ -4,13 +4,15 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import { useGlobalState } from '../../../context/GlobalStateContext';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
+    const {state, setState} = useGlobalState();
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     useEffect(()=>{
-        fetch(`https://lukas-manufacturer-server-site.vercel.app/products/${id}`,{
+        fetch(`http://localhost:4000/products/${id}`,{
             method:'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +38,7 @@ const Purchase = () => {
             price : product.price,
             paid: false
         }
-        fetch('https://lukas-manufacturer-server-site.vercel.app/order', {
+        fetch('http://localhost:4000/order', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json',
@@ -48,6 +50,7 @@ const Purchase = () => {
         .then(data => {
             if(data.acknowledged){
                 toast('Your Order Placed Successfully')
+                setState((prev)=>({...prev, order: !prev.order}));
                 reset()
             }
         })
@@ -78,7 +81,7 @@ const Purchase = () => {
         quantityError = <p className='text-red-600'>{`Sorry! The Minimum Order Quantity is ${minimum}`}</p>
     }
     return (
-        <div className='px-10'>
+        <div className='px-10 bg-black'>
             <div className="min-h-screen">
                 <div className="hero-content grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 mx-auto">
                     <div className='card text-center mx-10 shadow-2xl bg-base-100'>
@@ -177,7 +180,7 @@ const Purchase = () => {
 
                         </div>
                     </div>
-                    <div className="mx-auto border-slate-400 border-2 rounded-lg w-96 text-center">
+                    <div className="mx-auto bg-gray-200 border-slate-400 border-2 rounded-lg w-96 text-center">
                         <div className="">
                             <div className="max-w-md mb-6">
                                 <h2 className="mt-6 mb-4 text-3xl md:text-4xl lg:text-4xl font-heading font-medium">{product.name}</h2>

@@ -16,7 +16,7 @@ const CheckoutForm = ({ order , total}) => {
 
      useEffect(() => {
         if(total){
-            fetch('https://lukas-manufacturer-server-site.vercel.app/create-payment-intent', {
+            fetch('http://localhost:4000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

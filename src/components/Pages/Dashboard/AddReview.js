@@ -15,7 +15,7 @@ const AddReview = () => {
             rating: data.rating,
             img: data.img
         }
-        fetch('https://lukas-manufacturer-server-site.vercel.app/review', {
+        fetch('http://localhost:4000/review', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

@@ -21,6 +21,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Payment from './components/Pages/Payment/Payment';
 import RequireAdmin from './components/Pages/Shared/RequireAdmin';
+import Tooltip from './components/Pages/Shared/Tooltip';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path='signUp' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Tooltip></Tooltip>
       <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>

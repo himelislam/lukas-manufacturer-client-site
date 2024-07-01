@@ -23,7 +23,7 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password);
         const email = data.email;
         if(email){
-            fetch('https://lukas-manufacturer-server-site.vercel.app/login',{
+            fetch('http://localhost:4000/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -60,7 +60,7 @@ const Login = () => {
             email : gUser?.user?.email
         }
        if(user){
-        fetch('https://lukas-manufacturer-server-site.vercel.app/login',{
+        fetch('http://localhost:4000/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -70,7 +70,7 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
             if(data.token && user){
-                fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
+                fetch('http://localhost:4000/user', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -149,7 +149,7 @@ const Login = () => {
                                 {signInError}
                         <input className='btn w-full max-w-xs text-white' type="submit" value='Login' />
                     </form>
-                    <p><small>New to Doctors Portal? <Link to='/signUp' className='text-success'>Create New Account</Link></small></p>
+                    <p><small>New to Lukas's Portal? <Link to='/signUp' className='text-success'>Create New Account</Link></small></p>
                     <div className="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Conitnue With Google</button>
                 </div>

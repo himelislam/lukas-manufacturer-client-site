@@ -4,7 +4,7 @@ import UserRow from './UserRow';
 const MakeAdmin = () => {
     const [users, setUsers] = useState([])
     useEffect(()=> {
-        fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
+        fetch('http://localhost:4000/user', {
             method: 'GET',
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         })

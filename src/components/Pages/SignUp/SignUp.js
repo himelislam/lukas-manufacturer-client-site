@@ -26,7 +26,7 @@ const SignUp = () => {
             name: data.name,
             email: data.email
         }
-        fetch('https://lukas-manufacturer-server-site.vercel.app/login', {
+        fetch('http://localhost:4000/login', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.token && user) {
-                    fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
+                    fetch('http://localhost:4000/user', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -73,7 +73,7 @@ const SignUp = () => {
             name: gUser?.user?.displayName,
             email: gUser?.user?.email
         }
-        fetch('https://lukas-manufacturer-server-site.vercel.app/login', {
+        fetch('http://localhost:4000/login', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -83,7 +83,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.token) {
-                    fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
+                    fetch('http://localhost:4000/user', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
