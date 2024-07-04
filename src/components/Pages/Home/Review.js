@@ -5,7 +5,11 @@ const Review = ({ review }) => {
     const [menu, setMenu] = useState(true);
     const [menu1, setMenu1] = useState(false);
 
-    console.log(review, "review");
+    let reviewCount = new Array();
+    reviewCount.length = review.rating;
+    
+
+    console.log(reviewCount, "review");
     return (
         // <div>
         //     <section className=" bg-blueGray-100 rounded-t-10xl overflow-hidden">
@@ -41,7 +45,7 @@ const Review = ({ review }) => {
         //         </div>
         //     </section>
         // </div>
-         <div className="md:px-6 2xl:px-0 2xl:container 2xl:mx-auto flex justify-center items-center">
+         <div className="md: 2xl:px-0 2xl:container 2xl:mx-auto flex justify-center items-center">
          <div className="flex flex-col justify-start items-start w-full space-y-8">
              <div className="w-full flex justify-start items-start flex-col bg-gray-50 p-8">
                  <div className="flex flex-col md:flex-row justify-between w-full">
@@ -55,7 +59,10 @@ const Review = ({ review }) => {
                      </div>
                      <div className="cursor-pointer mt-2 md:mt-0">
                          <svg width="152" height="24" viewBox="0 0 152 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                             <g clipPath="url(#clip0)">
+                         {
+                            reviewCount.map((_, index)=> (<g clipPath="url(#clip0)"><path d="M17.5598 24.4285C17.3999 24.4291 17.2422 24.3914 17.0998 24.3185L11.9998 21.6485L6.89982 24.3185C6.73422 24.4056 6.5475 24.4444 6.3609 24.4307C6.1743 24.4169 5.9953 24.3511 5.84425 24.2407C5.6932 24.1303 5.57616 23.9797 5.50644 23.8061C5.43671 23.6324 5.4171 23.4427 5.44982 23.2585L6.44982 17.6285L2.32982 13.6285C2.20128 13.5002 2.1101 13.3394 2.06605 13.1632C2.02201 12.987 2.02677 12.8022 2.07982 12.6285C2.13778 12.4508 2.2444 12.2928 2.38757 12.1726C2.53075 12.0525 2.70475 11.9748 2.88982 11.9485L8.58982 11.1185L11.0998 5.98849C11.1817 5.81942 11.3096 5.67683 11.4687 5.57706C11.6279 5.47729 11.812 5.42438 11.9998 5.42438C12.1877 5.42438 12.3717 5.47729 12.5309 5.57706C12.6901 5.67683 12.8179 5.81942 12.8998 5.98849L15.4398 11.1085L21.1398 11.9385C21.3249 11.9648 21.4989 12.0425 21.6421 12.1626C21.7852 12.2828 21.8919 12.4408 21.9498 12.6185C22.0029 12.7922 22.0076 12.977 21.9636 13.1532C21.9196 13.3294 21.8284 13.4902 21.6998 13.6185L17.5798 17.6185L18.5798 23.2485C18.6155 23.436 18.5968 23.6297 18.526 23.8069C18.4551 23.9841 18.335 24.1374 18.1798 24.2485C17.9987 24.3754 17.7807 24.4387 17.5598 24.4285V24.4285Z" fill="#1F2937"/></g>))
+                         }
+                             {/* <g clipPath="url(#clip0)">
                                  <path
                                      d="M17.5598 24.4285C17.3999 24.4291 17.2422 24.3914 17.0998 24.3185L11.9998 21.6485L6.89982 24.3185C6.73422 24.4056 6.5475 24.4444 6.3609 24.4307C6.1743 24.4169 5.9953 24.3511 5.84425 24.2407C5.6932 24.1303 5.57616 23.9797 5.50644 23.8061C5.43671 23.6324 5.4171 23.4427 5.44982 23.2585L6.44982 17.6285L2.32982 13.6285C2.20128 13.5002 2.1101 13.3394 2.06605 13.1632C2.02201 12.987 2.02677 12.8022 2.07982 12.6285C2.13778 12.4508 2.2444 12.2928 2.38757 12.1726C2.53075 12.0525 2.70475 11.9748 2.88982 11.9485L8.58982 11.1185L11.0998 5.98849C11.1817 5.81942 11.3096 5.67683 11.4687 5.57706C11.6279 5.47729 11.812 5.42438 11.9998 5.42438C12.1877 5.42438 12.3717 5.47729 12.5309 5.57706C12.6901 5.67683 12.8179 5.81942 12.8998 5.98849L15.4398 11.1085L21.1398 11.9385C21.3249 11.9648 21.4989 12.0425 21.6421 12.1626C21.7852 12.2828 21.8919 12.4408 21.9498 12.6185C22.0029 12.7922 22.0076 12.977 21.9636 13.1532C21.9196 13.3294 21.8284 13.4902 21.6998 13.6185L17.5798 17.6185L18.5798 23.2485C18.6155 23.436 18.5968 23.6297 18.526 23.8069C18.4551 23.9841 18.335 24.1374 18.1798 24.2485C17.9987 24.3754 17.7807 24.4387 17.5598 24.4285V24.4285Z"
                                      fill="#1F2937"
@@ -81,7 +88,7 @@ const Review = ({ review }) => {
                              </g>
                              <g clipPath="url(#clip4)">
                                  <path d="M135.146 16.911L131.052 12.9355L136.734 12.1081L137.256 12.032L137.488 11.558L139.998 6.42798L139.998 6.42798L140 6.42443L140.004 6.4329L142.544 11.5529L142.777 12.0225L143.296 12.0981L148.978 12.9255L144.883 16.901L144.502 17.2708L144.595 17.7934L145.595 23.4234L145.595 23.4234L145.597 23.4356L145.605 23.4463L145.56 24.4285L145.556 23.4474L145.564 23.4326L140.464 20.7626L140 20.5197L139.536 20.7626L134.436 23.4326L134.434 23.4334L135.434 17.8034L135.527 17.2808L135.146 16.911Z" stroke="#1F2937" strokeWidth="2" />
-                             </g>
+                             </g> */}
                              <defs>
                                  <clipPath id="clip0">
                                      <rect width="24" height="24" fill="white" />
@@ -104,7 +111,7 @@ const Review = ({ review }) => {
                  </div>
                  {/* className={"md:block " + (menu1 ? "block" : "hidden")} */}
                  <div className={"md:block " + (menu ? "block" : "hidden")}>
-                     <p className="mt-3 text-base leading-normal text-gray-600 w-full md:w-9/12 xl:w-5/6">{review?.description}</p>
+                     <p className="mt-3 text-base leading-normal text-gray-600 w-full md:w-9/12 xl:w-5/6">{review?.description.slice(0,150) + ` ...`}</p>
                      <div className="hidden md:flex mt-6 flex-row justify-start items-start space-x-4">
                          <div>
                              <img src="https://i.ibb.co/QXzVpHp/vincent-wachowiak-8g-Cm-EBVl6a-I-unsplash-1.png" alt="chair-1" />
