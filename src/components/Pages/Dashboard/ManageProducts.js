@@ -18,7 +18,7 @@ const ManageProducts = () => {
     },[isReload])
     return (
         <div>
-            <h2 className='text-center text-bold text-4xl py-4'>Manage All Products</h2>
+            <h2 className='text-center text-bold text-4xl py-4 text-white'>Manage All Products</h2>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
