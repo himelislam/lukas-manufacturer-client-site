@@ -5,7 +5,7 @@ const DeleteProductModal = ({isReload, setIsReload, deleteProduct, setDeleteProd
     const {_id, name} = deleteProduct;
 
     const handleDeleteProduct = ()=>{
-        fetch(`http://localhost:4000/product/${_id}`, {
+        fetch(`https://lukas-manufacturer-server-site.vercel.app/product/${_id}`, {
             method: 'DELETE',
             headers:{
                 'content-type': 'application/json',

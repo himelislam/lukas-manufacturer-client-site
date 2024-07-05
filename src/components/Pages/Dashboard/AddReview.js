@@ -20,7 +20,7 @@ const AddReview = () => {
             time: date
         }
         console.log(review, "review ");
-        fetch('http://localhost:4000/review', {
+        fetch('https://lukas-manufacturer-server-site.vercel.app/review', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

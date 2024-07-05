@@ -9,7 +9,7 @@ const MyProfile = () => {
     const [serverUser, setServerUser] = useState({});
     const [isReload, setIsReload] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:4000/user/${authUser.email}`)
+        fetch(`https://lukas-manufacturer-server-site.vercel.app/user/${authUser.email}`)
             .then(res => res.json())
             .then(data => setServerUser(data))
     }, [authUser, isReload])
@@ -24,7 +24,7 @@ const MyProfile = () => {
             phone: data.phone,
             linkdin: data.linkdin
         }
-        fetch(`http://localhost:4000/user/?email=${email}`, {
+        fetch(`https://lukas-manufacturer-server-site.vercel.app/user/?email=${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

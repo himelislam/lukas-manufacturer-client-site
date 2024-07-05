@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
 const BestSeller = () => {
-    const { data: products, isLoading } = useQuery('products', () => fetch('http://localhost:4000/products').then(res => res.json()))
+    const { data: products, isLoading } = useQuery('products', () => fetch('https://lukas-manufacturer-server-site.vercel.app/products').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
