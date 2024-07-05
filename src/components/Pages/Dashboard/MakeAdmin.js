@@ -13,7 +13,7 @@ const MakeAdmin = () => {
     },[])
     return (
         <div>
-            <h2 className='text-center text-bold text-4xl py-4'>Make Admin</h2>
+            <h2 className='text-center text-bold text-4xl py-4 text-white'>Make Admin</h2>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">

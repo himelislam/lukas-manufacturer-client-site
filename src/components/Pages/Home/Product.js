@@ -41,7 +41,7 @@ const Product = ({ product }) => {
                 <p className="text-sm font-medium text-gray-900">${product?.price}</p>
             </div>
             <div className='w-full flex justify-center mb-5'>
-            <Link to={`/purchase/${product._id}`} className="w-full mx-5 block"><button class="px-6 w-full py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">Buy Now</button></Link>
+            <Link to={`/purchase/${product._id}`} className="w-full mx-5 block"><button className="px-6 w-full py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">Buy Now</button></Link>
             </div>
         </div>
     );

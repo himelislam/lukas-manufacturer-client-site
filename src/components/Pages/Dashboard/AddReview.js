@@ -8,13 +8,18 @@ import { toast } from 'react-toastify';
 const AddReview = () => {
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const options = { year: 'numeric', month: 'short', day: '2-digit' };
+    const date = new Date().toLocaleDateString('en-US', options);
+    console.log(date);
     const onSubmit = async data => {
         const review = {
             name: user?.displayName,
             description: data.description,
             rating: data.rating,
-            img: data.img
+            img: data.img,
+            time: date
         }
+        console.log(review, "review ");
         fetch('http://localhost:4000/review', {
             method: 'POST',
             headers:{
@@ -32,12 +37,12 @@ const AddReview = () => {
     }
     return (
         <div>
-            <h2 className='text-center text-bold text-4xl py-6'>Add Review</h2>
+            <h2 className='text-center text-bold text-4xl py-6 text-white'>Add Review</h2>
             <div className='lg:mx-20 mb-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text text-white">Name</span>
                         </label>
                         <input
                             type="text"
@@ -50,7 +55,7 @@ const AddReview = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-white">Email</span>
                         </label>
                         <input
                             type="email"
@@ -63,7 +68,7 @@ const AddReview = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Description</span>
+                            <span className="label-text text-white">Description</span>
                         </label>
                         <textarea
                             type="text"
@@ -82,7 +87,7 @@ const AddReview = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Your Image</span>
+                            <span className="label-text text-white">Your Image</span>
                         </label>
                         <input
                             type="text"
@@ -101,7 +106,7 @@ const AddReview = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Your Rating Out of 5</span>
+                            <span className="label-text text-white">Your Rating Out of 5</span>
                         </label>
                         <input
                             type="number"

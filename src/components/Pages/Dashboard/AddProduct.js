@@ -30,12 +30,12 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <h2 className='text-center text-bold text-4xl py-4'>Add Product</h2>
+            <h2 className='text-center text-bold text-4xl py-4 text-white'>Add Product</h2>
             <div className='lg:mx-20 mb-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Product Name</span>
+                            <span className="label-text text-white">Product Name</span>
                         </label>
                         <input
                             type="text"
@@ -55,7 +55,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Product Image</span>
+                            <span className="label-text text-white">Product Image</span>
                         </label>
                         <input
                             type="text"
@@ -74,7 +74,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Short Description</span>
+                            <span className="label-text text-white">Short Description</span>
                         </label>
                         <textarea
                             type="text"
@@ -91,7 +91,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Minimum Order Quantity</span>
+                            <span className="label-text text-white">Minimum Order Quantity</span>
                         </label>
                         <input
                             type="number"
@@ -108,7 +108,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Available Quantity</span>
+                            <span className="label-text text-white">Available Quantity</span>
                         </label>
                         <input
                             type="number"
@@ -128,7 +128,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Price</span>
+                            <span className="label-text text-white">Price</span>
                         </label>
                         <input
                             type="number"

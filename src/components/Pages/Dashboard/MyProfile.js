@@ -43,12 +43,12 @@ const MyProfile = () => {
     }
     return (
         <div>
-            <h2 className='text-center text-bold text-4xl py-6'>My Profile</h2>
+            <h2 className='text-center text-bold text-4xl py-6 text-white'>My Profile</h2>
             <div className='lg:mx-20 mb-10'>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-control w-full ">
+                    <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text ">Name</span>
+                            <span className="label-text text-white">Name</span>
                         </label>
                         <input
                             type="text"
@@ -61,7 +61,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text  ">Email</span>
+                            <span className="label-text text-white">Email</span>
                         </label>
                         <input
                             type="email"
@@ -74,7 +74,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text  ">Education</span>
+                            <span className="label-text text-white">Education</span>
                         </label>
                         <input
                             type="text"
@@ -85,7 +85,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text  ">Location</span>
+                            <span className="label-text text-white">Location</span>
                         </label>
                         <input
                             type="text"
@@ -96,7 +96,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text  ">Your Phone</span>
+                            <span className="label-text text-white ">Your Phone</span>
                         </label>
                         <input
                             type="number"
@@ -107,7 +107,7 @@ const MyProfile = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text  ">Your Linkdin Profile</span>
+                            <span className="label-text text-white ">Your Linkdin Profile</span>
                         </label>
                         <input
                             type="text"
@@ -116,7 +116,7 @@ const MyProfile = () => {
                             {...register("linkdin")}
                         />
                     </div>
-                    <input className='btn btn-primary w-50 block mx-auto my-8' type="submit" value='UPDATE PROFILE' />
+                    <input className='btn btn-primary w-50 block mx-auto my-8 bg-slate-600 hover:bg-slate-700' type="submit" value='UPDATE PROFILE' />
                 </form>
             </div>
         </div>
