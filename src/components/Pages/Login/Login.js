@@ -23,7 +23,7 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password);
         const email = data.email;
         if(email){
-            fetch('http://localhost:4000/login',{
+            fetch('https://lukas-manufacturer-server-site.vercel.app/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -60,7 +60,7 @@ const Login = () => {
             email : gUser?.user?.email
         }
        if(user){
-        fetch('http://localhost:4000/login',{
+        fetch('https://lukas-manufacturer-server-site.vercel.app/login',{
             method: 'POST',
             headers:{
                 'content-type':'application/json'
@@ -70,7 +70,7 @@ const Login = () => {
         .then(res => res.json())
         .then(data => {
             if(data.token && user){
-                fetch('http://localhost:4000/user', {
+                fetch('https://lukas-manufacturer-server-site.vercel.app/user', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

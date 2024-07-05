@@ -7,7 +7,7 @@ const ManageOrders = () => {
     const [deleteOrder, setDeleteOrder] = useState(null);
     const [isReload, setIsReload] = useState(false);
     useEffect(()=> {
-        fetch('http://localhost:4000/orders',{
+        fetch('https://lukas-manufacturer-server-site.vercel.app/orders',{
             method:'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

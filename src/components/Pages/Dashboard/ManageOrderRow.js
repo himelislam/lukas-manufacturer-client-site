@@ -5,7 +5,7 @@ const ManageOrderRow = ({order, index , setIsReload, isReload,setDeleteOrder}) =
     const [productId, setProductId] = useState('');
     useEffect(()=>{
         if(productId){
-            fetch(`http://localhost:4000/order`,{
+            fetch(`https://lukas-manufacturer-server-site.vercel.app/order`,{
             method: 'PATCH',
             headers:{
                 'content-type': 'application/json'
