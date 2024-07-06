@@ -6,8 +6,8 @@ const OurTeam = () => {
             <section className="relative py-20 2xl:py-40 overflow-hidden">
                 <img className="hidden lg:block absolute inset-x-0 bottom-0 mb-96" src="zospace-assets/lines/line-two-montain.svg" alt=""/>
                     <div className="relative container px-4 mx-auto">
+                        <h2 className="text-2xl font-bold tracking-tight text-gray-100">Reviews That Always Matter for us</h2>
                         <div className="max-w-4xl mx-auto">
-                            <h2 className="mb-24 text-center text-5xl font-bold font-heading">Our Team</h2>
                             <div className="flex flex-wrap justify-center -mx-10 mb-20">
                                 <div className="w-full lg:w-1/3 px-10 mb-20 lg:mb-0">
                                     <div>

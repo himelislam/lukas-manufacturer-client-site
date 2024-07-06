@@ -11,8 +11,9 @@ const Purchase = () => {
     const {state, setState} = useGlobalState();
     const { id } = useParams();
     const [product, setProduct] = useState([]);
+    const [reviews, setReviews] = useState([]);
     useEffect(()=>{
-        fetch(`https://lukas-manufacturer-server-site.vercel.app/products/${id}`,{
+        fetch(`http://localhost:4000/products/${id}`,{
             method:'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,6 +21,10 @@ const Purchase = () => {
         })
         .then(res => res.json())
         .then(data => setProduct(data))
+
+        fetch(`http://localhost:4000/review/${id}`)
+        .then(res => res.json())
+        .then(data => setReviews(data))
     },[id])
     const minimum = product.minimumQuantity;
     const available = product.availableQuantity;
@@ -38,7 +43,7 @@ const Purchase = () => {
             price : product.price,
             paid: false
         }
-        fetch('https://lukas-manufacturer-server-site.vercel.app/order', {
+        fetch('http://localhost:4000/order', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json',
@@ -223,6 +228,9 @@ const Purchase = () => {
                     </div>
                     <div>
                         <img className='w-full' src={product.img}></img>
+                        {
+                            reviews.map(review => <p className='text-white'>{review.rating}</p>)
+                        }
                     </div>
                 </div>
             </div>

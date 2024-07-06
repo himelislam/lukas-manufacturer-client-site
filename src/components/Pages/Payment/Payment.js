@@ -10,7 +10,7 @@ const Payment = () => {
     const { id } = useParams();
     const [order, setOrder] = useState([])
     useEffect(() => {
-        fetch(`https://lukas-manufacturer-server-site.vercel.app/order/?id=${id}`,{
+        fetch(`http://localhost:4000/order/?id=${id}`,{
             method:'GET',
             headers:{
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

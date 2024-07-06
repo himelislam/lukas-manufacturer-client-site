@@ -6,7 +6,7 @@ const Review = ({ review }) => {
     return (
          <div className="md: 2xl:px-0 2xl:container 2xl:mx-auto flex justify-center items-center">
          <div className="flex flex-col justify-start items-start w-full space-y-8">
-             <div className="w-full flex justify-start items-start flex-col bg-gray-50 p-8">
+             <div className="w-full flex justify-start items-start flex-col bg-gray-50 p-8 rounded-lg">
                  <div className="flex flex-col flex-row justify-between w-full">
                      <div className="flex flex-row justify-between items-start">
                          <p className="text-xl md:text-2xl font-medium leading-normal text-gray-800">{review?.name}</p>

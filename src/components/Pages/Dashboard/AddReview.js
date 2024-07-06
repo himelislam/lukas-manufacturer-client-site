@@ -1,39 +1,54 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
-
+import Select from 'react-select';
 
 const AddReview = () => {
     const [user] = useAuthState(auth)
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { control, register, formState: { errors }, handleSubmit, reset } = useForm();
     const options = { year: 'numeric', month: 'short', day: '2-digit' };
     const date = new Date().toLocaleDateString('en-US', options);
-    console.log(date);
+
+    const [productOptions, setProductOptions] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:4000/products')
+        .then(res=> res.json())
+        .then(data => {
+            const option = data.map(product =>({
+                value: product._id,
+                label: product.name
+            }))
+            setProductOptions(option);
+        })
+    },[])
+
+    console.log(productOptions, "products");
     const onSubmit = async data => {
         const review = {
             name: user?.displayName,
             description: data.description,
             rating: data.rating,
             img: data.img,
-            time: date
+            time: date,
+            productId: data.product.value
         }
-        console.log(review, "review ");
-        fetch('https://lukas-manufacturer-server-site.vercel.app/review', {
+        // console.log(data, "data on submit ");
+        fetch('http://localhost:4000/review', {
             method: 'POST',
-            headers:{
+            headers: {
                 'content-type': 'application/json'
             },
-            body:JSON.stringify({review})
+            body: JSON.stringify({ review })
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                toast('Review Added Successfully')
-                reset()
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast('Review Added Successfully')
+                    reset()
+                }
+            })
     }
     return (
         <div>
@@ -79,7 +94,7 @@ const AddReview = () => {
                                     value: true,
                                     message: 'Description is Required'
                                 }
-                                })}
+                            })}
                         />
                         <label className="label">
                             {errors.description?.type === 'required' && <span className="label-text-alt text-red-600">{errors.description.message}</span>}
@@ -98,8 +113,30 @@ const AddReview = () => {
                                     value: true,
                                     message: 'Image is Required'
                                 }
-                                })}
+                            })}
                         />
+                        <label className="label">
+                            {errors.img?.type === 'required' && <span className="label-text-alt text-red-600">{errors.img.message}</span>}
+                        </label>
+                    </div>
+
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text text-white">Products</span>
+                        </label>
+                        <Controller
+                            name="product"
+                            control={control}
+                            rules={{ required: true }}
+                            render={({ field }) => (
+                                <Select
+                                {...field}
+                                options={productOptions}
+                                placeholder="Select Product"
+                                className='text-black'
+                                />
+                            )}
+                            />
                         <label className="label">
                             {errors.img?.type === 'required' && <span className="label-text-alt text-red-600">{errors.img.message}</span>}
                         </label>
@@ -112,16 +149,16 @@ const AddReview = () => {
                             type="number"
                             placeholder="Your Ratings"
                             className="input input-bordered w-full "
-                        {...register("rating",{
-                            pattern: {
-                                value: /[1-5]/,
-                                message: 'Rate out of 5 only.'
-                            },
-                            required: {
-                                value: true,
-                                message: 'Ratings is Required'
-                            }
-                        })}
+                            {...register("rating", {
+                                pattern: {
+                                    value: /[1-5]/,
+                                    message: 'Rate out of 5 only.'
+                                },
+                                required: {
+                                    value: true,
+                                    message: 'Ratings is Required'
+                                }
+                            })}
                         />
                         <label className="label">
                             {errors.rating?.type === 'pattern' && <span className="label-text-alt text-red-600">{errors.rating.message}</span>}
